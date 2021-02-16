@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="05e45b2e358048e7a403c22ec31b26c8" Name="Diagram1">
+        <EntityTypeShape EntityType="DetailingCenterModel.CarClass" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DetailingCenterModel.CarMark" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DetailingCenterModel.CarModel" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DetailingCenterModel.Client" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DetailingCenterModel.Gender" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DetailingCenterModel.Service" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="DetailingCenterModel.ServiceType" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DetailingCenterModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="DetailingCenterModel.FK_Client_CarClass" ManuallyRouted="false" />
+        <AssociationConnector Association="DetailingCenterModel.FK_CarModel_CarMark" ManuallyRouted="false" />
+        <AssociationConnector Association="DetailingCenterModel.FK_Client_CarModel" ManuallyRouted="false" />
+        <AssociationConnector Association="DetailingCenterModel.FK_Client_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="DetailingCenterModel.FK_Client_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="DetailingCenterModel.FK_Service_ServiceType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DetailingCenterModel.Employee" Width="1.5" PointX="5.25" PointY="9.125" />
+        <EntityTypeShape EntityType="DetailingCenterModel.Role" Width="1.5" PointX="3" PointY="13.75" />
+        <AssociationConnector Association="DetailingCenterModel.FK_Employee_Gender" />
+        <AssociationConnector Association="DetailingCenterModel.FK_Employee_Role" />
+        <EntityTypeShape EntityType="DetailingCenterModel.Order" Width="1.5" PointX="8.5" PointY="5.25" />
+        <AssociationConnector Association="DetailingCenterModel.FK_CarModel_CarClass" />
+        <AssociationConnector Association="DetailingCenterModel.FK_Order_CarModel" />
+        <AssociationConnector Association="DetailingCenterModel.FK_Order_Client" />
+        <AssociationConnector Association="DetailingCenterModel.FK_Order_Employee" />
+        <AssociationConnector Association="DetailingCenterModel.FK_Order_Service" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
