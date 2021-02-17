@@ -24,7 +24,7 @@ namespace DetailingCenter
         public MainWindow()
         {
             InitializeComponent();
-            serviceList.ItemsSource = context.Service.ToList();
+            //serviceList.ItemsSource = context.Service.ToList();
         }
     }
 }

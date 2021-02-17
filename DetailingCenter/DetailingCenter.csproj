@@ -193,6 +193,10 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\icon.png" />
+    <Resource Include="Images\checkbox.png" />
+    <Resource Include="Images\close_big.png" />
+    <Resource Include="Images\minus.png" />
     <Resource Include="Images\klipartz.com.png" />
   </ItemGroup>
   <ItemGroup>
