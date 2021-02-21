@@ -49,6 +49,7 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.0.0.2422, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.4.0.0\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -73,6 +74,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Windows\AdminAuth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ClientsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -142,6 +147,9 @@
     <Compile Include="Windows\AdminAuth.xaml.cs">
       <DependentUpon>AdminAuth.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ClientsPage.xaml.cs">
+      <DependentUpon>ClientsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ServiceList.xaml.cs">
       <DependentUpon>ServiceList.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -172,6 +180,7 @@
     <None Include="EF\DBModel.edmx.diagram">
       <DependentUpon>DBModel.edmx</DependentUpon>
     </None>
+    <Resource Include="Fonts\Lato.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -193,6 +202,9 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\id_card.png" />
+    <Resource Include="Images\service.png" />
+    <Resource Include="Images\finance.png" />
     <Resource Include="Images\icon.png" />
     <Resource Include="Images\checkbox.png" />
     <Resource Include="Images\close_big.png" />
