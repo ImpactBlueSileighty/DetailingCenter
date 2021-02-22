@@ -173,6 +173,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\Lato.ttf" />
     <EntityDeploy Include="EF\DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
@@ -180,7 +181,6 @@
     <None Include="EF\DBModel.edmx.diagram">
       <DependentUpon>DBModel.edmx</DependentUpon>
     </None>
-    <Resource Include="Fonts\Lato.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -190,18 +190,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="EF\DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
       <DependentUpon>DBModel.edmx</DependentUpon>
+      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="EF\DBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\id_card.png" />
     <Resource Include="Images\service.png" />
     <Resource Include="Images\finance.png" />

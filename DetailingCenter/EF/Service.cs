@@ -18,19 +18,17 @@ namespace DetailingCenter.EF
         public Service()
         {
             this.Client = new HashSet<Client>();
-            this.Order = new HashSet<Order>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
         public int ServiceTypeId { get; set; }
-        public string Duration { get; set; }
+        public int DurationFrom { get; set; }
+        public int DurationTo { get; set; }
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Client> Client { get; set; }
         public virtual ServiceType ServiceType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
     }
 }

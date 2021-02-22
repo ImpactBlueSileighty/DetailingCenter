@@ -5,16 +5,35 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DetailingCenter.Windows"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="700" d:DesignWidth="900"
       Title="ClientsPage">
 
+
     <Grid>
-        <ListView x:Name="listClients" Background="#FFADB2B5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+
+        <ListView x:Name="listClients" 
+                  Background="#FFADB2B5"
+                  FontSize="16">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="30"/>
+                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding LastName}" Width="100"/>
+                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding FirstName}" Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <Grid Grid.Row="1" Background="#FFADB2B5">
+            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button x:Name="addBtn" Content="Добавить" Width="100" Height="30"  Style="{DynamicResource ButtonStyle3}"/>
+                <Button x:Name="changeBtn" Content="Изменить" Width="100" Height="30" Margin="5 0 5 0"  Style="{DynamicResource ButtonStyle3}"/>
+                <Button x:Name="deleteBtn" Content="Удалить" Width="100" Height="30" Style="{DynamicResource ButtonStyle3}"/>
+            </WrapPanel>
+        </Grid>
     </Grid>
 </Page>

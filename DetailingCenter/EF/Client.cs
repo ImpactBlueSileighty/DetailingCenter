@@ -14,12 +14,6 @@ namespace DetailingCenter.EF
     
     public partial class Client
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Client()
-        {
-            this.Order = new HashSet<Order>();
-        }
-    
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -27,16 +21,10 @@ namespace DetailingCenter.EF
         public string GenderCode { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public int CarId { get; set; }
-        public int CarClassId { get; set; }
         public int LastService { get; set; }
         public System.DateTime LastVisit { get; set; }
     
-        public virtual CarClass CarClass { get; set; }
-        public virtual CarModel CarModel { get; set; }
         public virtual Gender Gender { get; set; }
         public virtual Service Service { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
     }
 }

@@ -22,8 +22,6 @@ namespace DetailingCenter.EF
         public System.DateTime DateOfService { get; set; }
     
         public virtual CarModel CarModel { get; set; }
-        public virtual Client Client { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual Service Service { get; set; }
     }
 }

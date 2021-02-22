@@ -17,7 +17,6 @@ namespace DetailingCenter.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CarModel()
         {
-            this.Client = new HashSet<Client>();
             this.Order = new HashSet<Order>();
         }
     
@@ -27,10 +26,8 @@ namespace DetailingCenter.EF
         public int CarMarkId { get; set; }
         public int ClassId { get; set; }
     
-        public virtual CarMark CarMark { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Client> Client { get; set; }
         public virtual CarClass CarClass { get; set; }
+        public virtual CarMark CarMark { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
     }
