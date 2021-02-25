@@ -190,9 +190,19 @@
 
         <!-- listview -->
 
-        <Frame Grid.Column="1" 
+        <Frame x:Name="navigationFrame"
+               Grid.Column="1" 
                Grid.Row="1"
-               Source="pack://application:,,,/Pages/ClientsPage.xaml"/>
+               Source="pack://application:,,,/Pages/ClientPage.xaml"
+               NavigationUIVisibility="Hidden"/>
+
+        <!--<Frame x:Name="servicePage"
+               Grid.Column="1" 
+               Grid.Row="1"
+               Source="pack://application:,,,/Pages/ServicePage.xaml"
+               NavigationUIVisibility="Hidden"/>-->
+        
+        
         <!--<ListView Panel.ZIndex="-1" x:Name="serviceList"
                   Grid.Row="1"
                   Grid.Column="1" Background="#FFADB2B5" 

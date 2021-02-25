@@ -12,20 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static DetailingCenter.EF.AppData;
-using DetailingCenter.EF;
 
-namespace DetailingCenter.Windows
+namespace DetailingCenter.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ClientsPage.xaml
+    /// Логика взаимодействия для ServicePage.xaml
     /// </summary>
-    public partial class ClientsPage : Page
+    public partial class ServicePage : Page
     {
-        public ClientsPage()
+        public ServicePage()
         {
             InitializeComponent();
-            listClients.ItemsSource = context.Client.ToList();
         }
     }
 }

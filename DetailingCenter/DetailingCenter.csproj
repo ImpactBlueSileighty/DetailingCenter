@@ -73,11 +73,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Pages\ServicePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\AdminAuth.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ClientsPage.xaml">
+    <Page Include="Pages\ClientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,11 +148,14 @@
     <Compile Include="EF\sysdiagrams.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ServicePage.xaml.cs">
+      <DependentUpon>ServicePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AdminAuth.xaml.cs">
       <DependentUpon>AdminAuth.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ClientsPage.xaml.cs">
-      <DependentUpon>ClientsPage.xaml</DependentUpon>
+    <Compile Include="Pages\ClientPage.xaml.cs">
+      <DependentUpon>ClientPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\ServiceList.xaml.cs">
       <DependentUpon>ServiceList.xaml</DependentUpon>
