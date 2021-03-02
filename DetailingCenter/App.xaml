@@ -2,9 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:DetailingCenter" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
-             StartupUri="Windows/ServiceList.xaml">
+             StartupUri="Windows/StartWindow.xaml">
     <Application.Resources>
-
+        
+        <!-- StartWindow Style -->
+        
         <Style x:Key="textBlockStyle1" TargetType="TextBlock">
             <Setter Property="FontSize" Value="17"/>
             <Setter Property="Margin" Value="0 0 0 5"/>
