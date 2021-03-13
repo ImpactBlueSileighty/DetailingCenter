@@ -27,14 +27,14 @@ namespace DetailingCenter
         {
             InitializeComponent();
             //serviceList.ItemsSource = context.Service.ToList();
-            
+
 
         }
 
 
         private void windowSizeBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(this.WindowState == WindowState.Maximized)
+            if (this.WindowState == WindowState.Maximized)
             {
                 this.WindowState = WindowState.Normal;
                 this.ResizeMode = ResizeMode.CanResizeWithGrip;
@@ -43,9 +43,9 @@ namespace DetailingCenter
             {
                 this.ResizeMode = ResizeMode.NoResize;
                 this.WindowState = WindowState.Maximized;
-                
+
             }
-            
+
         }
 
         private void windowCloseBtn_Click(object sender, RoutedEventArgs e)
@@ -63,19 +63,20 @@ namespace DetailingCenter
             DragMove();
         }
 
-        private void calendarBtn_Click(object sender, RoutedEventArgs e)
+        private void orderBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (calendarBtn.IsChecked == true)
+            OrderPage op = new OrderPage();
+            if (orderBtn.IsChecked == true)
             {
                 navigationRec1.Fill = Brushes.Orange;
-                navigationRec2.Fill = new SolidColorBrush(Color.FromRgb(11, 8, 20));
-                navigationRec3.Fill = new SolidColorBrush(Color.FromRgb(11, 8, 20));
-                navigationRec4.Fill = new SolidColorBrush(Color.FromRgb(11, 8, 20));
+                navigationRec2.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
+                navigationRec3.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
+                navigationRec4.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
 
                 clientsBtn.IsChecked = false;
                 financeBtn.IsChecked = false;
                 serviceBtn.IsChecked = false;
-                
+                navigationFrame.Navigate(op);
 
             }
         }
@@ -85,16 +86,16 @@ namespace DetailingCenter
             ClientPage cp = new ClientPage();
             if (clientsBtn.IsChecked == true)
             {
-                navigationRec1.Fill = new SolidColorBrush(Color.FromRgb(11, 8, 20));
+                navigationRec1.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
                 navigationRec2.Fill = Brushes.Orange;
-                navigationRec3.Fill = new SolidColorBrush(Color.FromRgb(11, 8, 20));
-                navigationRec4.Fill = new SolidColorBrush(Color.FromRgb(11, 8, 20));
+                navigationRec3.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
+                navigationRec4.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
 
-                calendarBtn.IsChecked = false;
+                orderBtn.IsChecked = false;
                 financeBtn.IsChecked = false;
                 serviceBtn.IsChecked = false;
                 navigationFrame.Navigate(cp);
-                
+
             }
 
         }
@@ -105,14 +106,14 @@ namespace DetailingCenter
             if (serviceBtn.IsChecked == true)
             {
                 navigationRec3.Fill = Brushes.Orange;
-                navigationRec1.Fill = new SolidColorBrush(Color.FromRgb(11, 8, 20));
-                navigationRec2.Fill = new SolidColorBrush(Color.FromRgb(11, 8, 20));
-                navigationRec4.Fill = new SolidColorBrush(Color.FromRgb(11, 8, 20));
+                navigationRec1.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
+                navigationRec2.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
+                navigationRec4.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
 
-                calendarBtn.IsChecked = false;
+                orderBtn.IsChecked = false;
                 clientsBtn.IsChecked = false;
                 financeBtn.IsChecked = false;
-                
+
 
                 navigationFrame.Navigate(sp);
             }
@@ -123,19 +124,19 @@ namespace DetailingCenter
             if (financeBtn.IsChecked == true)
             {
                 navigationRec4.Fill = Brushes.Orange;
-                navigationRec1.Fill = new SolidColorBrush(Color.FromRgb(11, 8, 20));
-                navigationRec2.Fill = new SolidColorBrush(Color.FromRgb(11, 8, 20));
-                navigationRec3.Fill = new SolidColorBrush(Color.FromRgb(11, 8, 20));
+                navigationRec1.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
+                navigationRec2.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
+                navigationRec3.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
 
-                calendarBtn.IsChecked = false;
+                orderBtn.IsChecked = false;
                 clientsBtn.IsChecked = false;
                 serviceBtn.IsChecked = false;
-               
+
             }
         }
 
 
 
-        
+
     }
 }

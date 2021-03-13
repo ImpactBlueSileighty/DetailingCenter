@@ -14,22 +14,22 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True" >
+    
+    <Window.Resources>
 
-
-   
-
-
-
+        <FontFamily x:Key="font">Fonts/#ZURCHBE</FontFamily>
+        
+    </Window.Resources>
 
 
     <Grid>
         <!-- lining -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100px"/>
+            <RowDefinition Height="70px"/>
             <RowDefinition Height="7*"/>
 
         </Grid.RowDefinitions>
@@ -41,7 +41,7 @@
         <Image Source="/Images/icon.png"/>
 
         <!-- Header -->
-        <Grid Background="#FF1A1B3F" 
+        <Grid Background="#FF6464DE" 
               Grid.Column="1"
               Grid.ColumnSpan="2"
               x:Name="headerGrid"
@@ -61,21 +61,21 @@
 
                 <Button x:Name="windowTaskBarBtn"
                         Grid.Column="1" 
-                        Background="#FF1A1B3F" 
+                        Background="#FF6464DE" 
                         Style="{DynamicResource ButtonStyle1}"
                         Click="windowTaskBarBtn_Click">
                     <Image Source="/Images/minus.png" />
                 </Button>
                 <Button x:Name="windowSizeBtn"
                         Grid.Column="2" 
-                        Background="#FF1A1B3F"
+                        Background="#FF6464DE"
                         Style="{DynamicResource ButtonStyle1}"
                         Click="windowSizeBtn_Click">
                     <Image Source="/Images/checkbox.png" Height="23" Width="23"/>
                 </Button>
                 <Button x:Name="windowCloseBtn"
                         Grid.Column="3" 
-                        Background="#FF1A1B3F"
+                        Background="#FF6464DE"
                         Style="{DynamicResource ButtonStyle2}"
                         Click="windowCloseBtn_Click">
 
@@ -87,7 +87,7 @@
         <!-- Navigation Menu -->
 
         <Grid Grid.RowSpan="4" 
-              Background="#FF0B0814">
+              Background="#FF171E28">
             <Grid.Effect>
                 <DropShadowEffect  ShadowDepth="2" Direction="330" Opacity="0.5"/>
             </Grid.Effect>
@@ -100,12 +100,11 @@
 
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="5*"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             
@@ -118,10 +117,10 @@
                           Template="{DynamicResource ButtonBaseControlTemplate1}"
                           HorizontalContentAlignment="Stretch"
                           VerticalContentAlignment="Stretch"
-                          x:Name="calendarBtn" 
+                          x:Name="orderBtn" 
                           Grid.Row="0"
                           Grid.Column="1"
-                          Click="calendarBtn_Click"
+                          Click="orderBtn_Click"
                           IsChecked="True">
 
                 <Grid>
@@ -134,16 +133,16 @@
                        
                        Width="40"
                        Height="40" Grid.Column="0"/>
-                    <TextBlock Text="Order Calendar"
+                    <TextBlock Text="Orders"
                                VerticalAlignment="Center"
                                Grid.Column="1"
-                               Style="{DynamicResource TextBlockStyle1}" />
+                               Style="{DynamicResource TextBlockStyle1}"/>
                 </Grid>
             </ToggleButton>
 
             <!-- Clients Button-->
             <Rectangle x:Name="navigationRec2" 
-                       Fill="#FF0B0814"
+                       Fill="#FF171E28"
                        Grid.Row="1"/>
             <ToggleButton Style="{DynamicResource ToggleBtnStyle1}"
                           Template="{DynamicResource ButtonBaseControlTemplate1}"
@@ -177,7 +176,7 @@
 
             <!-- Service Button-->
             <Rectangle x:Name="navigationRec3" 
-                       Fill="#FF0B0814"
+                       Fill="#FF171E28"
                        Grid.Row="2"/>
             <ToggleButton Style="{DynamicResource ToggleBtnStyle1}"
                           Template="{DynamicResource ButtonBaseControlTemplate1}"
@@ -207,7 +206,7 @@
 
             <!-- Finance Button-->
             <Rectangle x:Name="navigationRec4" 
-                       Fill="#FF0B0814"
+                       Fill="#FF171E28"
                        Grid.Row="3"/>
             <ToggleButton Style="{DynamicResource ToggleBtnStyle1}"
                           Template="{DynamicResource ButtonBaseControlTemplate1}"
@@ -245,7 +244,7 @@
         <Frame x:Name="navigationFrame"
                Grid.Column="1" 
                Grid.Row="1"
-               Source="pack://application:,,,/Pages/CalendarPage.xaml"
+               Source="pack://application:,,,/Pages/OrderPage.xaml"
                NavigationUIVisibility="Hidden"/>
 
         <!--<Frame x:Name="servicePage"

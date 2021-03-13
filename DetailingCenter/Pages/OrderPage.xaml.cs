@@ -10,18 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DetailingCenter.Windows
+namespace DetailingCenter.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AdminAuth.xaml
+    /// Логика взаимодействия для CalendarPage.xaml
     /// </summary>
-    public partial class AdminAuth : Window
+    public partial class OrderPage : Page
     {
-        public AdminAuth()
+        public OrderPage()
         {
             InitializeComponent();
         }
+
+       
     }
 }

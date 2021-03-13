@@ -25,7 +25,7 @@ namespace DetailingCenter.Windows
         public ClientPage()
         {
             InitializeComponent();
-            listClients.ItemsSource = context.Client.ToList();
+            //listClients.ItemsSource = context.Client.ToList();
         }
     }
 }
