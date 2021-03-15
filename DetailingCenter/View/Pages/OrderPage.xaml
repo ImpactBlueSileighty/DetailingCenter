@@ -1,0 +1,296 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DetailingCenter.Pages"
+      xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="DetailingCenter.Pages.OrderPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="900"
+      d:DataContext="{StaticResource ResourceKey=SampleData}"
+      Title="OrderPage">
+
+    
+
+    <Grid>
+
+        <!-- Lining -->
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Background="#FFF6F7F9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="15"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <!-- Label -->
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="1" 
+                       Text="FILTERS"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       FontSize="15"
+                       FontFamily="/DetailingCenter;component/Fonts/#Open Sans"
+                       Foreground="#FF7A8087"
+                       FontWeight="Bold"/>
+
+            <!-- Search by Client-->
+
+            
+            <StackPanel Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalAlignment="Center">
+                
+                <TextBlock Text="Client"
+                           FontSize="17"
+                           FontFamily="/DetailingCenter;component/Fonts/#Open Sans"
+                           Foreground="Black"/>
+
+                <ComboBox VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch" 
+                          Style="{DynamicResource ComboBoxStyle1}"
+                          IsEditable="True" />
+
+               
+
+            </StackPanel>
+            
+             <!-- Search by Car -->
+
+            <StackPanel Grid.Row="2"
+                        Grid.Column="1"
+                        VerticalAlignment="Center">
+                <Separator Margin="0 0 0 10"/>
+                <TextBlock Text="Mark"
+                           FontSize="17"
+                           FontFamily="/DetailingCenter;component/Fonts/#Open Sans"/>
+
+                <ComboBox VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch" 
+                          Style="{DynamicResource ComboBoxStyle1}"
+                          Margin="0 0 0 10"/>
+
+                <TextBlock Text="Model"
+                           FontSize="17"
+                           FontFamily="/DetailingCenter;component/Fonts/#Open Sans"/>
+
+                <ComboBox VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch" 
+                          Style="{DynamicResource ComboBoxStyle1}"
+                          IsEnabled="False"/>
+            </StackPanel>
+            
+            <!-- Search by Service -->
+            
+            <StackPanel Grid.Row="3"
+                        Grid.Column="1"
+                        VerticalAlignment="Center">
+                <Separator Margin="0 0 0 10"/>
+                <TextBlock Text="Service Type"
+                           FontSize="17"
+                           FontFamily="/DetailingCenter;component/Fonts/#Open Sans"/>
+
+                <ComboBox VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch" 
+                          Style="{DynamicResource ComboBoxStyle1}"
+                          Margin="0 0 0 10"/>
+
+                <TextBlock Text="Service"
+                           FontSize="17"
+                           FontFamily="/DetailingCenter;component/Fonts/#Open Sans"/>
+
+                <ComboBox VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch" 
+                          Style="{DynamicResource ComboBoxStyle1}"
+                          IsEnabled="False"/>
+
+            </StackPanel>
+            
+            <!-- Search by Status -->
+
+            <StackPanel Grid.Row="4"
+                        Grid.Column="1"
+                        VerticalAlignment="Center">
+                <Separator Margin="0 0 0 10"/>
+                <TextBlock Text="Order Status"
+                           FontSize="17"
+                           FontFamily="/DetailingCenter;component/Fonts/#Open Sans"/>
+
+                <ComboBox VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch" 
+                          Style="{DynamicResource ComboBoxStyle1}"
+                          IsEnabled="True"/>
+
+            </StackPanel>
+            
+            <!-- Searh by DateTime -->
+
+            <StackPanel Grid.Row="5"
+                        Grid.Column="1"
+                        VerticalAlignment="Center">
+                <Separator Margin="0 0 0 10"/>
+                <TextBlock Text="Date"
+                           FontSize="17"
+                           FontFamily="/DetailingCenter;component/Fonts/#Open Sans"/>
+
+                <DatePicker VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch"/>
+                
+
+            </StackPanel>
+
+            <WrapPanel Grid.Row="6" 
+                       Grid.Column="1"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center">
+                <!--<Button x:Name="addBtn" Content="Add" Width="100" Height="30"  Style="{DynamicResource ButtonStyle3}"/>-->
+                <Button x:Name="changeBtn" Content="Edit" Width="70" Height="30" Style="{DynamicResource ButtonStyle3}"/>
+                <Button x:Name="deleteBtn" Content="Delete" Width="70" Height="30" Margin="10 0 0 0" Style="{DynamicResource ButtonStyle3}"/>
+            </WrapPanel>
+
+        </Grid>
+
+        <!-- Order List -->
+
+        <Grid Grid.Column="1"
+              Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="15"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+
+
+
+            <ListView ItemsSource="{Binding Orders}"
+                      Grid.Row="1"
+                      Grid.Column="1"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="90"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="5"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5"/>
+                                <RowDefinition Height="90"/>
+                                <RowDefinition Height="5"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Car Image -->
+
+                            <Border BorderThickness="1"
+                                    BorderBrush="Black"
+                                    Grid.Column="1"
+                                    Grid.Row="1">
+                                
+                            </Border>
+
+                            <!-- Car/Client info -->
+
+                            <StackPanel Grid.Row="1" 
+                                        Grid.Column="3" 
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding CarModel.NameFormat}" 
+                                           FontSize="16"/>
+                                <TextBlock Text="{Binding Client.NameFormat}" 
+                                           FontSize="10"/>
+                            </StackPanel>
+
+                            <!-- Contacts Info -->
+
+                            <StackPanel Grid.Row="1"
+                                        Grid.Column="4"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center">           
+                                <TextBlock Text="{Binding Client.Phone}"
+                                           FontSize="16"/>
+                                <TextBlock Text="{Binding Client.Email}"
+                                           FontSize="16"/>
+                            </StackPanel>
+
+                            <!-- Service Info -->
+
+                            <StackPanel Grid.Row="1"
+                                        Grid.Column="5"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"> 
+                                <TextBlock Text="Type Service Name" 
+                                           FontSize="16"/>
+                                <TextBlock Text="Service Name" 
+                                           FontSize="16"/>
+                            </StackPanel>
+
+                            <!-- Status order Info -->
+
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="6"
+                                       Text="Status"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="16"/>      
+
+                            <!-- Cost Info -->
+
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="7"
+                                       Text="Date" 
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Top"
+                                       FontSize="14"/>  
+
+                            <!-- Date of order Info -->
+
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="7"
+                                       Text="Cost" 
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Foreground="Green"
+                                       FontSize="16"/>
+
+
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Bottom -->
+        </Grid>
+
+
+
+    </Grid>
+</Page>

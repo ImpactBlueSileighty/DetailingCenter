@@ -1,12 +1,14 @@
 ﻿<Application x:Class="DetailingCenter.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:DetailingCenter" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
-             StartupUri="Windows/StartWindow.xaml">
+             xmlns:local="clr-namespace:DetailingCenter" 
+              xmlns:sampleData="clr-namespace:DetailingCenter.SampleData" 
+             xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
+             StartupUri="View/Windows/StartWindow.xaml">
     <Application.Resources>
 
-        
-        
+        <sampleData:SampleData x:Key="SampleData"/>
+
         <!-- StartWindow Style -->
 
         <Style x:Key="textBlockStyle1" TargetType="TextBlock">

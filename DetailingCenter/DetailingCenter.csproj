@@ -67,23 +67,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Pages\OrderPage.xaml">
+    <Page Include="View\Pages\OrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ServicePage.xaml">
+    <Page Include="View\Pages\ServicePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Template.xaml">
+    <Page Include="View\Pages\Template.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ClientPage.xaml">
+    <Page Include="View\Pages\ClientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\StartWindow.xaml">
+    <Page Include="View\Windows\StartWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -91,74 +91,75 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EF\AppData.cs" />
-    <Compile Include="EF\CarClass.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+    <Compile Include="Model\EFExtension\CarModel.cs" />
+    <Compile Include="Model\EFExtension\Client.cs" />
+    <Compile Include="Model\EF\AppData.cs" />
+    <Compile Include="Model\EF\CarClass.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\CarMark.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+    <Compile Include="Model\EF\CarMark.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\CarModel.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+    <Compile Include="Model\EF\CarModel.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\Client.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+    <Compile Include="Model\EF\Client.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\DBModel.Context.cs">
+    <Compile Include="Model\EF\Employee.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EF\Gender.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EF\ModelDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.Context.tt</DependentUpon>
+      <DependentUpon>ModelDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\DBModel.cs">
+    <Compile Include="Model\EF\ModelDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\DBModel.Designer.cs">
+    <Compile Include="Model\EF\ModelDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.edmx</DependentUpon>
+      <DependentUpon>ModelDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="EF\Employee.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+    <Compile Include="Model\EF\Order.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\Gender.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+    <Compile Include="Model\EF\Service.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\Order.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+    <Compile Include="Model\EF\ServiceType.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\Role.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+    <Compile Include="Model\EF\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\Service.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+    <Compile Include="Model\EF\sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\ServiceType.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+    <Compile Include="Model\EF\sysdiagrams.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EF\sp_helpdiagrams_Result.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EF\sysdiagrams.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\OrderPage.xaml.cs">
+    <Compile Include="SampleData\SampleData.cs" />
+    <Compile Include="ViewModel\OrderPage_VM.cs" />
+    <Compile Include="View\Pages\OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ServicePage.xaml.cs">
+    <Compile Include="View\Pages\ServicePage.xaml.cs">
       <DependentUpon>ServicePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Template.xaml.cs">
+    <Compile Include="View\Pages\Template.xaml.cs">
       <DependentUpon>Template.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ClientPage.xaml.cs">
+    <Compile Include="View\Pages\ClientPage.xaml.cs">
       <DependentUpon>ClientPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\StartWindow.xaml.cs">
+    <Compile Include="View\Windows\StartWindow.xaml.cs">
       <DependentUpon>StartWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -181,15 +182,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Fonts\Lato.ttf" />
-    <EntityDeploy Include="EF\DBModel.edmx">
+    <Resource Include="Resources\Fonts\Lato.ttf" />
+    <Resource Include="Resources\Fonts\OpenSans-Regular.ttf" />
+    <EntityDeploy Include="Model\EF\ModelDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="EF\DBModel.edmx.diagram">
-      <DependentUpon>DBModel.edmx</DependentUpon>
+    <None Include="Model\EF\ModelDB.edmx.diagram">
+      <DependentUpon>ModelDB.edmx</DependentUpon>
     </None>
-    <Resource Include="Fonts\OpenSans-Regular.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -200,31 +201,34 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EF\DBModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBModel.edmx</DependentUpon>
-      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="EF\DBModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBModel.edmx</DependentUpon>
-      <LastGenOutput>DBModel.cs</LastGenOutput>
-    </Content>
-    <Resource Include="Images\calendar.png" />
+    <Resource Include="Resources\Images\calendar.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\id_card.png" />
-    <Resource Include="Images\service.png" />
-    <Resource Include="Images\finance.png" />
-    <Resource Include="Images\icon.png" />
-    <Resource Include="Images\checkbox.png" />
-    <Resource Include="Images\close_big.png" />
-    <Resource Include="Images\minus.png" />
-    <Resource Include="Images\klipartz.com.png" />
+    <Resource Include="Resources\Images\id_card.png" />
+    <Resource Include="Resources\Images\service.png" />
+    <Resource Include="Resources\Images\finance.png" />
+    <Resource Include="Resources\Images\icon.png" />
+    <Resource Include="Resources\Images\checkbox.png" />
+    <Resource Include="Resources\Images\close_big.png" />
+    <Resource Include="Resources\Images\minus.png" />
+    <Resource Include="Resources\Images\klipartz.com.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\EF\ModelDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelDB.edmx</DependentUpon>
+      <LastGenOutput>ModelDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\EF\ModelDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelDB.edmx</DependentUpon>
+      <LastGenOutput>ModelDB.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
