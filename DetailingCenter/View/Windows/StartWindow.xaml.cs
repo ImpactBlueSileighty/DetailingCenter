@@ -42,6 +42,7 @@ namespace DetailingCenter
             {
                 this.ResizeMode = ResizeMode.NoResize;
                 this.WindowState = WindowState.Maximized;
+
             }
 
         }

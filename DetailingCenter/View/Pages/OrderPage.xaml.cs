@@ -1,5 +1,4 @@
-﻿using DetailingCenter.View.Windows;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,8 +21,6 @@ namespace DetailingCenter.Pages
     public partial class OrderPage : Page
     {
         OrderPage_VM VM;
-
-
         public OrderPage()
         {
             VM = new OrderPage_VM();
@@ -31,25 +28,7 @@ namespace DetailingCenter.Pages
             InitializeComponent();
         }
 
-        private void editBtn_Click(object sender, RoutedEventArgs e) => OpenEditWindow(false);
-        private void addOrderBtn_Click(object sender, RoutedEventArgs e) => OpenEditWindow(true);
 
-        private void OpenEditWindow(bool NewOrder)
-        {
-            this.Opacity = 0.4;
-            if (NewOrder)
-            {
-                VM.Add();
-            }
-            else
-            {
-                VM.Edit();
-            }
-            this.Opacity = 1;
-        }
-
-        private void deleteBtn_Click(object sender, RoutedEventArgs e) => VM.Delete();
-
-
+       
     }
 }
