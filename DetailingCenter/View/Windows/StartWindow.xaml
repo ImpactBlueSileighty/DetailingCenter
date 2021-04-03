@@ -8,7 +8,7 @@
         Title="Detailing Center" 
         Height="800" 
         Width="1300"
-        MinHeight="600"
+        MinHeight="700"
         MinWidth="1100"
         ResizeMode="CanResizeWithGrip"
         WindowStartupLocation="CenterScreen"
@@ -23,7 +23,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70px"/>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="7*"/>
 
         </Grid.RowDefinitions>
@@ -42,8 +42,8 @@
               MouseLeftButtonDown="headerGrid_MouseLeftButtonDown">
               
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -58,14 +58,14 @@
                         Background="#FF6464DE" 
                         Style="{DynamicResource ButtonStyle1}"
                         Click="windowTaskBarBtn_Click">
-                    <Image Source="/Resources/Images/minus.png" />
+                    <Image Source="/Resources/Images/taskBarIcon.png" />
                 </Button>
                 <Button x:Name="windowSizeBtn"
                         Grid.Column="2" 
                         Background="#FF6464DE"
                         Style="{DynamicResource ButtonStyle1}"
                         Click="windowSizeBtn_Click">
-                    <Image Source="/Resources/Images/checkbox.png" Height="23" Width="23"/>
+                    <Image Source="/Resources/Images/windowSizeIcon.png" Height="23" Width="23"/>
                 </Button>
                 <Button x:Name="windowCloseBtn"
                         Grid.Column="3" 
@@ -73,7 +73,7 @@
                         Style="{DynamicResource ButtonStyle2}"
                         Click="windowCloseBtn_Click">
 
-                    <Image Source="/Resources/Images/close_big.png"/>
+                    <Image Source="/Resources/Images/windowCloseIcon.png"/>
                 </Button>
             </Grid>
         </Grid>
@@ -123,7 +123,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Image Source="/Resources/Images/calendar.png"
+                    <Image Source="/Resources/Images/calendarIcon.png"
                        
                        Width="40"
                        Height="40" Grid.Column="0"/>
@@ -153,7 +153,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Image Source="/Resources/Images/id_card.png"
+                    <Image Source="/Resources/Images/clientIcon.png"
                        
                        Width="40"
                        Height="40" Grid.Column="0"/>
@@ -187,7 +187,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Image Source="/Resources/Images/service.png"
+                    <Image Source="/Resources/Images/serviceIcon.png"
                        
                        Width="40"
                        Height="40" Grid.Column="0"/>
@@ -217,7 +217,7 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Image Source="/Resources/Images/id_card.png"
+                    <Image Source="/Resources/Images/clientIcon.png"
                        
                        Width="40"
                        Height="40" Grid.Column="0"/>
