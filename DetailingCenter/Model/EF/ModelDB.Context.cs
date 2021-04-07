@@ -28,16 +28,17 @@ namespace DetailingCenter.Model.EF
         }
     
         public virtual DbSet<CarClass> CarClass { get; set; }
+        public virtual DbSet<CarColor> CarColor { get; set; }
         public virtual DbSet<CarMark> CarMark { get; set; }
         public virtual DbSet<CarModel> CarModel { get; set; }
         public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
         public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<OrderStatus> OrderStatus { get; set; }
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<ServiceType> ServiceType { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<OrderStatus> OrderStatus { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

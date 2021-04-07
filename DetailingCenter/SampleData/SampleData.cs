@@ -19,10 +19,10 @@ namespace DetailingCenter.SampleData
             {
                 CarModel = new CarModel()
                 {
-                    Name = "Silvia S13",
+                    Name = "Impreza 22B",
                     CarMark = new CarMark()
                     {
-                        Name = "Nissan"
+                        Name = "Subaru"
                     }
 
                 },
@@ -37,14 +37,24 @@ namespace DetailingCenter.SampleData
 
                 Service = new Service()
                 {
-                    Name = "Мойка",
+                    Name = "Wash",
                     ServiceType = new ServiceType()
                     {
-                        Name = "Детейлинг Интерьера"
-                    }
+                        Name = "Interior Detailing"
+                    },
+
+                    Cost = 299
+
+                },
+
+                OrderStatus = new OrderStatus()
+                {
+                    Name = "In Queue"
                 },
 
                 DateOfService = DateTime.Now
+
+
             }) ;
 
 

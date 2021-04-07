@@ -8,7 +8,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="900"
       d:DataContext="{StaticResource ResourceKey=SampleData}"
-      Title="OrderPage">
+      Title="OrderPage"
+      FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans">
 
 
 
@@ -46,7 +47,7 @@
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        FontSize="15"
-                       FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans"
+                       
                        Foreground="#FF7A8087"
                        FontWeight="Bold"/>
 
@@ -64,7 +65,10 @@
                 <ComboBox VerticalAlignment="Center"
                           HorizontalAlignment="Stretch" 
                           Style="{DynamicResource ComboBoxStyle1}"
-                          IsEditable="True"/>
+                          IsEditable="True"
+                          ItemsSource="{Binding Clients}"
+                          DisplayMemberPath="NameFormat"
+                          SelectedItem="{Binding SelectedClient}"/>
 
 
 
@@ -83,7 +87,10 @@
                 <ComboBox VerticalAlignment="Center"
                           HorizontalAlignment="Stretch" 
                           Style="{DynamicResource ComboBoxStyle1}"
-                          Margin="0 0 0 10"/>
+                          Margin="0 0 0 10"
+                          ItemsSource="{Binding CarMarks}"
+                          SelectedItem="{Binding SelectedCarMark}"
+                          DisplayMemberPath="Name"/>
 
                 <TextBlock Text="Model"
                            FontSize="17"
@@ -92,7 +99,9 @@
                 <ComboBox VerticalAlignment="Center"
                           HorizontalAlignment="Stretch" 
                           Style="{DynamicResource ComboBoxStyle1}"
-                          IsEnabled="False"/>
+                          ItemsSource="{Binding CarModels}"
+                          SelectedItem="{Binding SelectedCarModel}"
+                          DisplayMemberPath="Name"/>
             </StackPanel>
 
             <!-- Search by Service -->
@@ -108,7 +117,10 @@
                 <ComboBox VerticalAlignment="Center"
                           HorizontalAlignment="Stretch" 
                           Style="{DynamicResource ComboBoxStyle1}"
-                          Margin="0 0 0 10"/>
+                          Margin="0 0 0 10"
+                          ItemsSource="{Binding ServiceTypes}"
+                          SelectedItem="{Binding SelectedServiceType}"
+                          DisplayMemberPath="Name"/>
 
                 <TextBlock Text="Service"
                            FontSize="17"
@@ -117,7 +129,9 @@
                 <ComboBox VerticalAlignment="Center"
                           HorizontalAlignment="Stretch" 
                           Style="{DynamicResource ComboBoxStyle1}"
-                          IsEnabled="False"/>
+                          ItemsSource="{Binding Services}"
+                          SelectedItem="{Binding SelectedService}"
+                          DisplayMemberPath="Name"/>
 
             </StackPanel>
 
@@ -193,7 +207,7 @@
                            VerticalAlignment="Center"
                            FontSize="20"
                            FontWeight="Bold"
-                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans"/>
+                           />
 
                 <!-- Add Order Btn -->
                 
@@ -216,7 +230,9 @@
                       SelectedItem="{Binding SelectedOrder}"
                       Grid.Row="1"
                       Grid.Column="1"
-                      SelectionMode="Single">   
+                      SelectionMode="Single"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -229,11 +245,10 @@
                                 <ColumnDefinition Width="5"/>
                                 <ColumnDefinition Width="90"/>
                                 <ColumnDefinition Width="20"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
                                 <ColumnDefinition Width="5"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -253,75 +268,75 @@
                             <!-- Car/Client info -->
 
                             <StackPanel Grid.Row="1" 
-                                    Grid.Column="3" 
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Center">
+                                        Grid.Column="3" 
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top">
                                 <TextBlock Text="{Binding CarModel.NameFormat}" 
                                            FontSize="16"
-                                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans"/>
+                                           Foreground="#FF171E28"
+                                           FontWeight="Bold"/>
                                 <TextBlock Text="{Binding Client.NameFormat}" 
-                                           FontSize="10"
-                                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans"/>
-                            </StackPanel>
+                                           FontSize="14"
+                                           Margin="0 10 0 0"/>
 
-                            <!-- Contacts Info -->
-
-                            <StackPanel Grid.Row="1"
-                                        Grid.Column="4"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center">
                                 <TextBlock Text="{Binding Client.Phone}"
-                                           FontSize="16"
-                                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans"/>
+                                           FontSize="14"
+                                           />
                                 <TextBlock Text="{Binding Client.Email}"
-                                           FontSize="16"
-                                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans"/>
+                                           FontSize="14"
+                                           />
                             </StackPanel>
 
                             <!-- Service Info -->
 
                             <StackPanel Grid.Row="1"
-                                        Grid.Column="5"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center">
-                                <TextBlock Text="Type Service Name" 
+                                        Grid.Column="4"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top">
+                                <TextBlock Text="{Binding Service.ServiceType.ServiceTypeFormat}" 
                                            FontSize="16"
-                                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans"/>
-                                <TextBlock Text="Service Name" 
+                                           TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding Service.Name}" 
                                            FontSize="16"
-                                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans"/>
+                                           FontWeight="Bold"
+                                           TextWrapping="Wrap"/>
+
+                                <TextBlock Text="Employee: " Margin="0 10 0 0"/>
+                                <TextBlock Text="{Binding Employee.NameFormat}" 
+                                           FontSize="14"
+                                           
+                                           TextWrapping="Wrap"/>
                             </StackPanel>
 
                             <!-- Status order Info -->
 
                             <TextBlock Grid.Row="1"
-                                    Grid.Column="6"
-                                    Text="Status"
+                                    Grid.Column="5"
+                                    Text="{Binding OrderStatus.Name}"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    FontSize="16"
-                                    FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans"/>
+                                    FontSize="16"/>
 
                             <!-- Cost Info -->
 
                             <TextBlock Grid.Row="1"
-                                    Grid.Column="7"
-                                    Text="Date" 
+                                    Grid.Column="6"
+                                    Text="{Binding DateFormat}" 
                                     HorizontalAlignment="Right"
-                                    VerticalAlignment="Top"
+                                    VerticalAlignment="Bottom"
                                     FontSize="14"
-                                    FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans"/>
+                                    />
 
                             <!-- Date of order Info -->
 
                             <TextBlock Grid.Row="1"
-                                    Grid.Column="7"
-                                    Text="Cost" 
+                                    Grid.Column="6"
+                                    Text="{Binding Service.CostFormat}" 
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Foreground="Green"
                                     FontSize="16"
-                                    FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans"/>
+                                    />
                         </Grid>
 
                     </DataTemplate>

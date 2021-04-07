@@ -18,15 +18,15 @@ namespace DetailingCenter
 
         public List<CarMark> CarMarks { get; private set; }
 
-        private CarMark selectedCarMark;
+        private CarMark _selectedCarMark;
         public CarMark SelectedCarMark
         {
-            get => selectedCarMark;
+            get => _selectedCarMark;
             set
             {
-                selectedCarMark = value;
+                _selectedCarMark = value;
 
-                CarModels = selectedCarMark.CarModel.ToList();
+                CarModels = _selectedCarMark.CarModel.ToList();
                 OnPropertyChanged(nameof(CarModels));
             }
         }
@@ -34,19 +34,23 @@ namespace DetailingCenter
         public List<CarModel> CarModels { get; private set; }
         public CarModel SelectedCarModel { get; set; }
 
-        
+        public List<CarColor> CarColors { get; private set; }
+        public CarColor SelectedCarColor { get; set; }
+
+        public List<Employee> Employees { get; private set; }
+        public Employee SelectedEmployee { get; set; }
 
         public List<ServiceType> ServiceTypes { get; private set; }
 
-        private ServiceType selectedServiceType;
+        private ServiceType _selectedServiceType;
         public ServiceType SelectedServiceType
         {
-            get => selectedServiceType;
+            get => _selectedServiceType;
             set
             {
-                selectedServiceType = value;
+                _selectedServiceType = value;
 
-                Services = selectedServiceType.Service.ToList();
+                Services = _selectedServiceType.Service.ToList();
                 OnPropertyChanged(nameof(Services));
             }
 
@@ -71,7 +75,12 @@ namespace DetailingCenter
             Clients = context.Client.ToList();
             CarMarks = context.CarMark.ToList();
 
+            CarColors = context.CarColor.ToList();
+
             ServiceTypes = context.ServiceType.ToList();
+
+            Employees = context.Employee.ToList();
+
             OrderStatuses = context.OrderStatus.ToList();
 
             if (CurrentOrder != null)
@@ -81,9 +90,13 @@ namespace DetailingCenter
                 SelectedCarMark = CurrentOrder.CarModel.CarMark;
                 SelectedCarModel = CurrentOrder.CarModel;
 
+                SelectedCarColor = CurrentOrder.CarColor;
+
                 SelectedServiceType = CurrentOrder.Service.ServiceType;
 
                 SelectedService = CurrentOrder.Service;
+
+                SelectedEmployee = CurrentOrder.Employee;
 
                 SelectedOrderStatus = CurrentOrder.OrderStatus;
 
@@ -105,7 +118,9 @@ namespace DetailingCenter
                 {
                     Client = SelectedClient,
                     CarModel = SelectedCarModel,
+                    CarColor = SelectedCarColor,
                     Service = SelectedService,
+                    Employee = SelectedEmployee,
                     OrderStatus = SelectedOrderStatus,
                     DateOfService = SelectedDate
                 };
@@ -117,6 +132,8 @@ namespace DetailingCenter
                 
                 CurrentOrder.CarModel = SelectedCarModel;
                 CurrentOrder.Service = SelectedService;
+                CurrentOrder.CarColor = SelectedCarColor;
+                CurrentOrder.Employee = SelectedEmployee;
                 CurrentOrder.OrderStatus = SelectedOrderStatus;
                 CurrentOrder.DateOfService = SelectedDate;
 

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DetailingCenter.View.Windows" 
         mc:Ignorable="d"
         Title="EditOrderWindow" 
-        Height="700" 
+        Height="750" 
         Width="400"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
@@ -20,6 +20,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <Border Panel.ZIndex="1"
+                Grid.RowSpan="2"
+                BorderThickness="1"
+                BorderBrush="Gray"/>
         <!-- Header -->
 
         <Grid Grid.Row="0"
@@ -56,12 +60,12 @@
                         Click="windowCloseBtn_Click">
                 <Image Source="/Resources/Images/windowCloseIcon.png"/>
             </Button>
-
+            
         </Grid>
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="10"/>
+                <RowDefinition Height="10"/> 
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="120"/>
                 <RowDefinition Height="25"/>
@@ -71,6 +75,8 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="25"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="40"/>
@@ -219,10 +225,25 @@
                         Style="{DynamicResource ComboBoxStyle1}"/>
 
             </WrapPanel>
+            
+            <!-- Employee choice -->
+
+            <TextBlock Grid.Row="11"
+                       Grid.Column="1"
+                       Text="Employee"
+                       Style="{DynamicResource AddEditTbxStyle}"/>
+
+            <ComboBox ItemsSource="{Binding Employees}"
+                      SelectedItem="{Binding SelectedEmployee}"
+                      DisplayMemberPath="NameFormat"
+                      Grid.Row="12"
+                      Grid.Column="1"
+                      Style="{DynamicResource ComboBoxStyle1}"/>
+
 
             <!-- Setting status -->
 
-            <TextBlock Grid.Row="11"
+            <TextBlock Grid.Row="13"
                        Grid.Column="1"
                        Text="Status"
                        Style="{DynamicResource AddEditTbxStyle}"/>
@@ -230,24 +251,24 @@
             <ComboBox ItemsSource="{Binding OrderStatuses}"
                       SelectedItem="{Binding SelectedOrderStatus}"
                       DisplayMemberPath="Name"
-                      Grid.Row="12"
+                      Grid.Row="14"
                       Grid.Column="1"
                       Style="{DynamicResource ComboBoxStyle1}"/>
 
             <!-- Date choice -->
-            <TextBlock Grid.Row="13"
+            <TextBlock Grid.Row="15"
                        Grid.Column="1"
                        Text="Date"
                        Style="{DynamicResource AddEditTbxStyle}"/>
 
             <DatePicker SelectedDate="{Binding SelectedDate}"
-                        Grid.Row="14"
+                        Grid.Row="16"
                         Grid.Column="1"
                         VerticalAlignment="Center"/>
             
             <!-- Buttons -->
 
-            <WrapPanel Grid.Row="15"
+            <WrapPanel Grid.Row="17"
                        Grid.Column="1"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center">

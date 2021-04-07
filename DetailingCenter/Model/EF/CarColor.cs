@@ -12,22 +12,18 @@ namespace DetailingCenter.Model.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class CarColor
     {
-        public int Id { get; set; }
-        public int EmployeeId { get; set; }
-        public int ClientId { get; set; }
-        public int ServiceId { get; set; }
-        public int CarId { get; set; }
-        public int StatusId { get; set; }
-        public int CarColorId { get; set; }
-        public System.DateTime DateOfService { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CarColor()
+        {
+            this.Order = new HashSet<Order>();
+        }
     
-        public virtual CarColor CarColor { get; set; }
-        public virtual CarModel CarModel { get; set; }
-        public virtual Client Client { get; set; }
-        public virtual Employee Employee { get; set; }
-        public virtual OrderStatus OrderStatus { get; set; }
-        public virtual Service Service { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Order { get; set; }
     }
 }
