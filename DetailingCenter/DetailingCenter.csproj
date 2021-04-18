@@ -91,7 +91,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Styles\TextBlock.xaml">
+    <Page Include="Resources\Styles\RadioButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\TextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pages\ClientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\EditClientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,9 +146,6 @@
     <Compile Include="Model\EFExtension\Service.cs" />
     <Compile Include="Model\EFExtension\ServiceType.cs" />
     <Compile Include="Model\EF\AppData.cs" />
-    <Compile Include="Model\EF\CarClass.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\EF\CarColor.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
@@ -196,6 +201,8 @@
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="SampleData\SampleData.cs" />
+    <Compile Include="ViewModel\ClientPage_VM.cs" />
+    <Compile Include="ViewModel\EditClientWindow_VM.cs" />
     <Compile Include="ViewModel\EditOrderWindow_VM.cs" />
     <Compile Include="ViewModel\ExceptionWindow_VM.cs" />
     <Compile Include="ViewModel\MessageWindow_VM.cs" />
@@ -211,6 +218,9 @@
     </Compile>
     <Compile Include="View\Pages\ClientPage.xaml.cs">
       <DependentUpon>ClientPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\EditClientWindow.xaml.cs">
+      <DependentUpon>EditClientWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\EditOrderWindow.xaml.cs">
       <DependentUpon>EditOrderWindow.xaml</DependentUpon>
@@ -287,6 +297,32 @@
       <DependentUpon>ModelDB.edmx</DependentUpon>
       <LastGenOutput>ModelDB.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="Resources\OrderPhotoes\1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\OrderPhotoes\1637536984519436751.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\OrderPhotoes\1637536985660736143.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\OrderPhotoes\1637536990104439584.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\OrderPhotoes\fd5fc6da90257b913b0f0da0cf0b3e0d689168be.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\OrderPhotoes\fd5fc6da90257b913b0f0da0cf0b3e0d689168be637536984220730933.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\OrderPhotoes\fd5fc6da90257b913b0f0da0cf0b3e0d689168be637536988467592012.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="Resources\OrderPhotoes\HOR_XB1_Subaru_Impreza_98talaf5rn.aw4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AdditionalFiles>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

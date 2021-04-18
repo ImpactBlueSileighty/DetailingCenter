@@ -2,16 +2,34 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media.Imaging;
 using DetailingCenter.Model.EF;
+using DetailingCenter.View.Windows;
+using Microsoft.Win32;
 using static DetailingCenter.Model.EF.AppData;
 
 namespace DetailingCenter
 {
     class EditOrderWindow_VM : INotifyPropertyChanged
     {
+
+
+        public string PhotoPath { get; set; }
+        public string PhotoPathFormat
+        {
+            get
+            {
+                var a = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                return a.Remove(a.LastIndexOf('\\')) + PhotoPath;
+            }
+        }
 
         public List<Client> Clients { get; private set; }
         public Client SelectedClient { get; set; }
@@ -67,10 +85,15 @@ namespace DetailingCenter
 
         public string WindowName { get; set; }
 
-        private Order CurrentOrder;
+        private Order _currentOrder;
         public EditOrderWindow_VM(Order SelectedOrder)
         {
-            CurrentOrder = SelectedOrder;
+
+
+
+            // filling comboboxes with data 
+
+            _currentOrder = SelectedOrder;
 
             Clients = context.Client.ToList();
             CarMarks = context.CarMark.ToList();
@@ -83,24 +106,27 @@ namespace DetailingCenter
 
             OrderStatuses = context.OrderStatus.ToList();
 
-            if (CurrentOrder != null)
+            // distribution of data to a window 
+            if (_currentOrder != null)
             {
-                SelectedClient = CurrentOrder.Client;
+                PhotoPath = _currentOrder.CarPhotoPath;
 
-                SelectedCarMark = CurrentOrder.CarModel.CarMark;
-                SelectedCarModel = CurrentOrder.CarModel;
+                SelectedClient = _currentOrder.Client;
 
-                SelectedCarColor = CurrentOrder.CarColor;
+                SelectedCarMark = _currentOrder.CarModel.CarMark;
+                SelectedCarModel = _currentOrder.CarModel;
 
-                SelectedServiceType = CurrentOrder.Service.ServiceType;
+                SelectedCarColor = _currentOrder.CarColor;
 
-                SelectedService = CurrentOrder.Service;
+                SelectedServiceType = _currentOrder.Service.ServiceType;
 
-                SelectedEmployee = CurrentOrder.Employee;
+                SelectedService = _currentOrder.Service;
 
-                SelectedOrderStatus = CurrentOrder.OrderStatus;
+                SelectedEmployee = _currentOrder.Employee;
 
-                SelectedDate = CurrentOrder.DateOfService;
+                SelectedOrderStatus = _currentOrder.OrderStatus;
+
+                SelectedDate = _currentOrder.DateOfService;
 
                 WindowName = "Edit order";
             }
@@ -109,39 +135,121 @@ namespace DetailingCenter
                 SelectedDate = DateTime.Now;
                 WindowName = "Add order";
             }
+            _fullPath = Assembly.GetExecutingAssembly().Location;
+            _fullPath = _fullPath.Remove(_fullPath.LastIndexOf('\\'));
+
         }
-        public void SaveChanges()
+        private string _fullPath;
+        FileInfo _newPhoto;
+        public void SetPhoto()
         {
-            if (CurrentOrder == null)
+            // string _photoPath = _fullPath.Substring(0, _fullPath.IndexOf("DetailingCenter")) + @"DetailingCenter\DetailingCenter\Resources\OrderPhotoes\";
+            string photoPath = _fullPath + @"\Resources\OrderPhotoes\";
+            string photoPathFrom;
+            string photoPathDestination = null;
+            string photoFileName = null;
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            openFileDialog.Multiselect = false;
+
+
+            openFileDialog.ShowDialog();
+            photoPathFrom = openFileDialog.FileName;
+            if (photoPathFrom != "")
             {
-                CurrentOrder = new Order()
+                FileInfo fiFrom = new FileInfo(photoPathFrom);
+                if (fiFrom.Exists)
                 {
-                    Client = SelectedClient,
-                    CarModel = SelectedCarModel,
-                    CarColor = SelectedCarColor,
-                    Service = SelectedService,
-                    Employee = SelectedEmployee,
-                    OrderStatus = SelectedOrderStatus,
-                    DateOfService = SelectedDate
-                };
-                context.Order.Add(CurrentOrder);
-            }
-            else
-            {
-                CurrentOrder.Client = SelectedClient;
-                
-                CurrentOrder.CarModel = SelectedCarModel;
-                CurrentOrder.Service = SelectedService;
-                CurrentOrder.CarColor = SelectedCarColor;
-                CurrentOrder.Employee = SelectedEmployee;
-                CurrentOrder.OrderStatus = SelectedOrderStatus;
-                CurrentOrder.DateOfService = SelectedDate;
+                    //  photoPathDestination = photoPath + fiFrom.Name;
+                    //FileInfo fiTo = new FileInfo(photoPathDestination);
 
+                    photoFileName = DateTime.Now.Ticks.ToString() + fiFrom.Extension;
+
+                    photoPathDestination = photoPath + photoFileName;
+
+                    fiFrom.CopyTo(photoPathDestination);
+                    _newPhoto = new FileInfo(photoPathDestination);
+                }
             }
 
-            context.SaveChanges();
+
+            PhotoPath = "/Resources/OrderPhotoes/" + photoFileName;
+
+
+
+            OnPropertyChanged(nameof(PhotoPathFormat));
         }
 
+        public void Cancel()
+        {
+
+            PhotoPath = "/Resources/OrderPhotoes/Empty.jpg";
+            OnPropertyChanged(nameof(PhotoPathFormat));
+            GC.Collect(3, GCCollectionMode.Forced, true, true);
+            Thread t = new Thread(delete);
+            t.Start();
+        }
+        void delete()
+        {
+            if (_newPhoto != null)
+                while (_newPhoto.Exists)
+                {
+                    try
+                    {
+                        _newPhoto.Delete();
+                        Console.WriteLine("Govno ydalilos");
+                        break;
+                    }
+                    catch { }
+                    Thread.Sleep(500);
+                }
+        }
+        public void SaveChanges() // Edit or Add Order data and save it to DB
+        {
+            try
+            {
+                if (_currentOrder == null)
+                {
+                    _currentOrder = new Order()
+                    {
+                        Client = SelectedClient,
+                        CarModel = SelectedCarModel,
+                        CarColor = SelectedCarColor,
+                        CarPhotoPath = PhotoPath,
+                        Service = SelectedService,
+                        Employee = SelectedEmployee,
+                        OrderStatus = SelectedOrderStatus,
+                        DateOfService = SelectedDate
+                    };
+                    context.Order.Add(_currentOrder);
+                }
+                else
+                {
+                    _currentOrder.CarPhotoPath = PhotoPath;
+                    _currentOrder.Client = SelectedClient;
+                    _currentOrder.CarModel = SelectedCarModel;
+                    _currentOrder.Service = SelectedService;
+                    _currentOrder.CarColor = SelectedCarColor;
+                    _currentOrder.Employee = SelectedEmployee;
+                    _currentOrder.OrderStatus = SelectedOrderStatus;
+                    _currentOrder.DateOfService = SelectedDate;
+
+                }
+
+                context.SaveChanges();
+            }
+            catch
+            {
+                string message = "You have not completed all the fields.";
+                var exceptionWindow = new ExceptionWindow(message);
+                exceptionWindow.ShowDialog();
+
+            }
+
+        }
+
+        // INotifyPropertyChanged interface implementation 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
         {

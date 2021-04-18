@@ -21,5 +21,13 @@ namespace DetailingCenter.Model.EF
                 { return DateOfService.Date.ToString("d"); }
             }
         }
+        public string CarPhotoFormat
+        {
+            get
+            {
+                var a= System.Reflection.Assembly.GetExecutingAssembly().Location;
+                return a.Remove(a.LastIndexOf('\\')) + CarPhotoPath;
+            }
+        }
     }
 }

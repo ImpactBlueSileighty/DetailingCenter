@@ -4,15 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище DetailingCenterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="CarClass">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Coefficient" Type="decimal" Precision="3" Scale="2" />
-        </EntityType>
+    <Schema Namespace="Хранилище DetailingCenterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CarColor">
           <Key>
             <PropertyRef Name="Id" />
@@ -47,7 +39,7 @@
           <Property Name="GenderCode" Type="nvarchar" MaxLength="1" Nullable="false" />
           <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastService" Type="int" Nullable="false" />
+          <Property Name="LastServiceId" Type="int" />
           <Property Name="LastVisit" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
@@ -76,9 +68,10 @@
           <Property Name="ClientId" Type="int" Nullable="false" />
           <Property Name="ServiceId" Type="int" Nullable="false" />
           <Property Name="CarId" Type="int" Nullable="false" />
+          <Property Name="CarPhotoPath" Type="nvarchar" MaxLength="1000" />
           <Property Name="StatusId" Type="int" Nullable="false" />
           <Property Name="CarColorId" Type="int" Nullable="false" />
-          <Property Name="DateOfService" Type="datetime" Nullable="false" />
+          <Property Name="DateOfService" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
@@ -115,18 +108,6 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK_CarModel_CarClass">
-          <End Role="CarClass" Type="Self.CarClass" Multiplicity="1" />
-          <End Role="CarModel" Type="Self.CarModel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CarClass">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CarModel">
-              <PropertyRef Name="ClassId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CarModel_CarMark">
           <End Role="CarMark" Type="Self.CarMark" Multiplicity="1" />
           <End Role="CarModel" Type="Self.CarModel" Multiplicity="*" />
@@ -152,14 +133,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Client_Service">
-          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
           <End Role="Client" Type="Self.Client" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Service">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Client">
-              <PropertyRef Name="LastService" />
+              <PropertyRef Name="LastServiceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -291,7 +272,6 @@
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище DetailingCenterModelContainer">
-          <EntitySet Name="CarClass" EntityType="Self.CarClass" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CarColor" EntityType="Self.CarColor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CarMark" EntityType="Self.CarMark" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CarModel" EntityType="Self.CarModel" Schema="dbo" store:Type="Tables" />
@@ -303,10 +283,6 @@
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceType" EntityType="Self.ServiceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_CarModel_CarClass" Association="Self.FK_CarModel_CarClass">
-            <End Role="CarClass" EntitySet="CarClass" />
-            <End Role="CarModel" EntitySet="CarModel" />
-          </AssociationSet>
           <AssociationSet Name="FK_CarModel_CarMark" Association="Self.FK_CarModel_CarMark">
             <End Role="CarMark" EntitySet="CarMark" />
             <End Role="CarModel" EntitySet="CarModel" />
@@ -352,20 +328,10 @@
             <End Role="Service" EntitySet="Service" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DetailingCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="CarClass">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Coefficient" Type="Decimal" Precision="3" Scale="2" />
-          <NavigationProperty Name="CarModel" Relationship="Self.FK_CarModel_CarClass" FromRole="CarClass" ToRole="CarModel" />
-        </EntityType>
         <EntityType Name="CarColor">
           <Key>
             <PropertyRef Name="Id" />
@@ -391,7 +357,6 @@
           <Property Name="StartYear" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CarMarkId" Type="Int32" Nullable="false" />
           <Property Name="ClassId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CarClass" Relationship="Self.FK_CarModel_CarClass" FromRole="CarModel" ToRole="CarClass" />
           <NavigationProperty Name="CarMark" Relationship="Self.FK_CarModel_CarMark" FromRole="CarModel" ToRole="CarMark" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_CarModel" FromRole="CarModel" ToRole="Order" />
         </EntityType>
@@ -405,8 +370,8 @@
           <Property Name="GenderCode" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastService" Type="Int32" Nullable="false" />
-          <Property Name="LastVisit" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LastServiceId" Type="Int32" />
+          <Property Name="LastVisit" Type="DateTime" Precision="0" Nullable="false" />
           <NavigationProperty Name="Gender" Relationship="Self.FK_Client_Gender" FromRole="Client" ToRole="Gender" />
           <NavigationProperty Name="Service" Relationship="Self.FK_Client_Service" FromRole="Client" ToRole="Service" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_Client" FromRole="Client" ToRole="Order" />
@@ -441,9 +406,10 @@
           <Property Name="ClientId" Type="Int32" Nullable="false" />
           <Property Name="ServiceId" Type="Int32" Nullable="false" />
           <Property Name="CarId" Type="Int32" Nullable="false" />
+          <Property Name="CarPhotoPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="StatusId" Type="Int32" Nullable="false" />
           <Property Name="CarColorId" Type="Int32" Nullable="false" />
-          <Property Name="DateOfService" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateOfService" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="CarColor" Relationship="Self.FK_Order_CarColor" FromRole="Order" ToRole="CarColor" />
           <NavigationProperty Name="CarModel" Relationship="Self.FK_Order_CarModel" FromRole="Order" ToRole="CarModel" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Order_Client" FromRole="Order" ToRole="Client" />
@@ -491,18 +457,6 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_CarModel_CarClass">
-          <End Role="CarClass" Type="Self.CarClass" Multiplicity="1" />
-          <End Role="CarModel" Type="Self.CarModel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CarClass">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CarModel">
-              <PropertyRef Name="ClassId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Order_CarColor">
           <End Role="CarColor" Type="Self.CarColor" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
@@ -552,14 +506,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Client_Service">
-          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
           <End Role="Client" Type="Self.Client" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Service">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Client">
-              <PropertyRef Name="LastService" />
+              <PropertyRef Name="LastServiceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -636,7 +590,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DetailingCenterEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CarClass" EntityType="Self.CarClass" />
           <EntitySet Name="CarColor" EntityType="Self.CarColor" />
           <EntitySet Name="CarMark" EntityType="Self.CarMark" />
           <EntitySet Name="CarModel" EntityType="Self.CarModel" />
@@ -648,10 +601,6 @@
           <EntitySet Name="Service" EntityType="Self.Service" />
           <EntitySet Name="ServiceType" EntityType="Self.ServiceType" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <AssociationSet Name="FK_CarModel_CarClass" Association="Self.FK_CarModel_CarClass">
-            <End Role="CarClass" EntitySet="CarClass" />
-            <End Role="CarModel" EntitySet="CarModel" />
-          </AssociationSet>
           <AssociationSet Name="FK_Order_CarColor" Association="Self.FK_Order_CarColor">
             <End Role="CarColor" EntitySet="CarColor" />
             <End Role="Order" EntitySet="Order" />
@@ -744,15 +693,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище DetailingCenterModelContainer" CdmEntityContainer="DetailingCenterEntities">
-          <EntitySetMapping Name="CarClass">
-            <EntityTypeMapping TypeName="DetailingCenterModel.CarClass">
-              <MappingFragment StoreEntitySet="CarClass">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Coefficient" ColumnName="Coefficient" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CarColor">
             <EntityTypeMapping TypeName="DetailingCenterModel.CarColor">
               <MappingFragment StoreEntitySet="CarColor">
@@ -789,7 +729,7 @@
                 <ScalarProperty Name="GenderCode" ColumnName="GenderCode" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="LastService" ColumnName="LastService" />
+                <ScalarProperty Name="LastServiceId" ColumnName="LastServiceId" />
                 <ScalarProperty Name="LastVisit" ColumnName="LastVisit" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -821,6 +761,7 @@
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
                 <ScalarProperty Name="CarId" ColumnName="CarId" />
+                <ScalarProperty Name="CarPhotoPath" ColumnName="CarPhotoPath" />
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="CarColorId" ColumnName="CarColorId" />
                 <ScalarProperty Name="DateOfService" ColumnName="DateOfService" />

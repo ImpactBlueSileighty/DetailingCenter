@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DetailingCenter.Model.EF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static DetailingCenter.Model.EF.AppData;
-using DetailingCenter.Model.EF;
 
 namespace DetailingCenter.Windows
 {
@@ -22,10 +21,35 @@ namespace DetailingCenter.Windows
     /// </summary>
     public partial class ClientPage : Page
     {
+        ClientPage_VM VM;
         public ClientPage()
         {
+            VM = new ClientPage_VM();
+            DataContext = VM;
             InitializeComponent();
-            //listClients.ItemsSource = context.Client.ToList();
         }
+
+        private void OpenEditWindow(bool NewClient)
+        {
+            this.Opacity = 0.4;
+            if (NewClient)
+            {
+                VM.Add();
+            }
+            else
+            {
+                VM.Edit();
+            }
+            this.Opacity = 1;
+        }
+
+        private void addClientBtn_Click(object sender, RoutedEventArgs e) => OpenEditWindow(true);
+        
+
+        private void editBtn_Click(object sender, RoutedEventArgs e) => OpenEditWindow(false);
+
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e) => VM.Delete();
+        
     }
 }

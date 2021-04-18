@@ -148,7 +148,9 @@
                 <ComboBox VerticalAlignment="Center"
                           HorizontalAlignment="Stretch" 
                           Style="{DynamicResource ComboBoxStyle1}"
-                          IsEnabled="True"/>
+                          ItemsSource="{Binding OrderStatuses}"
+                          SelectedItem="{Binding SelectedOrderStatus}"
+                          DisplayMemberPath="Name"/>
 
             </StackPanel>
 
@@ -163,7 +165,8 @@
                            FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"/>
 
                 <DatePicker VerticalAlignment="Center"
-                          HorizontalAlignment="Stretch"/>
+                          HorizontalAlignment="Stretch"
+                           SelectedDate="{Binding SelectedDate, UpdateSourceTrigger=Default}" />
 
 
             </StackPanel>
@@ -231,7 +234,8 @@
                       Grid.Row="1"
                       Grid.Column="1"
                       SelectionMode="Single"
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      Cursor="Hand">
                 
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
@@ -263,6 +267,7 @@
                                 BorderBrush="Black"
                                 Grid.Column="1"
                                 Grid.Row="1">
+                                <Image Source="{Binding CarPhotoFormat}"/>
                             </Border>
 
                             <!-- Car/Client info -->

@@ -16,15 +16,14 @@ using System.Windows.Shapes;
 namespace DetailingCenter.View.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для AddEditOrder.xaml
+    /// Логика взаимодействия для EditClientWindow.xaml
     /// </summary>
-    public partial class EditOrderWindow : Window
+    public partial class EditClientWindow : Window
     {
-        EditOrderWindow_VM VM;
-
-        public EditOrderWindow(Order SelectedOrder=null)
+        EditClientWindow_VM VM;
+        public EditClientWindow(Client SelectedClient = null)
         {
-            VM = new EditOrderWindow_VM(SelectedOrder);
+            VM = new EditClientWindow_VM(SelectedClient);
             DataContext = VM;
             InitializeComponent();
         }
@@ -46,32 +45,16 @@ namespace DetailingCenter.View.Windows
 
         private void submitBtn_Click(object sender, RoutedEventArgs e)
         {
-            cancel = false;
+
             VM.SaveChanges();
             this.Close();
         }
 
-        public bool cancel = true;
+        
         private void cancelBtn_Click(object sender, RoutedEventArgs e)
         {
-          
+
             this.Close();
-            
-        }
-
-        private void editPhoto_Click(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
-
-        private void addPhotoBtn_Click(object sender, RoutedEventArgs e)
-        {
-            VM.SetPhoto();
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            VM.Cancel();
         }
     }
 }

@@ -32,7 +32,7 @@
 
         <!-- Logo -->
 
-        <Image Source="/Resources/Images/icon.png"/>
+        <Image />
 
         <!-- Header -->
         <Grid Background="#FF6464DE" 

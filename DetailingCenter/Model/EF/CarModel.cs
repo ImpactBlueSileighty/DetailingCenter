@@ -26,7 +26,6 @@ namespace DetailingCenter.Model.EF
         public int CarMarkId { get; set; }
         public int ClassId { get; set; }
     
-        public virtual CarClass CarClass { get; set; }
         public virtual CarMark CarMark { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }

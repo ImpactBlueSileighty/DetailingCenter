@@ -6,9 +6,10 @@
     <sampleData:SampleData x:Key="SampleData"/>
     <!-- StartWindow Style -->
 
-    <Style x:Key="textBlockStyle1" TargetType="TextBlock">
+    <Style x:Key="TextBlockStyle1" TargetType="TextBlock">
         <Setter Property="FontSize" Value="17"/>
         <Setter Property="Margin" Value="0 0 0 5"/>
+        <Setter Property="Foreground" Value="#FFEBEEF1"/>
     </Style>
 
     <Style x:Key="textBoxStyle1" TargetType="TextBox">
@@ -28,6 +29,7 @@
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontFamily" Value="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"/>
         <Setter Property="Foreground" Value="#FF171E28"/>
+        
     </Style>
 
 </ResourceDictionary>

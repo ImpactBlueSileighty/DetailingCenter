@@ -27,7 +27,6 @@ namespace DetailingCenter.Model.EF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CarClass> CarClass { get; set; }
         public virtual DbSet<CarColor> CarColor { get; set; }
         public virtual DbSet<CarMark> CarMark { get; set; }
         public virtual DbSet<CarModel> CarModel { get; set; }

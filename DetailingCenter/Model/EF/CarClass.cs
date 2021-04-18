@@ -14,17 +14,8 @@ namespace DetailingCenter.Model.EF
     
     public partial class CarClass
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CarClass()
-        {
-            this.CarModel = new HashSet<CarModel>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
         public Nullable<decimal> Coefficient { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CarModel> CarModel { get; set; }
     }
 }

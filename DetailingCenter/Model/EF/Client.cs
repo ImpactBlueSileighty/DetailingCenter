@@ -26,7 +26,7 @@ namespace DetailingCenter.Model.EF
         public string GenderCode { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public int LastService { get; set; }
+        public Nullable<int> LastServiceId { get; set; }
         public System.DateTime LastVisit { get; set; }
     
         public virtual Gender Gender { get; set; }

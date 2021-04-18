@@ -19,6 +19,7 @@ namespace DetailingCenter.Model.EF
         public int ClientId { get; set; }
         public int ServiceId { get; set; }
         public int CarId { get; set; }
+        public string CarPhotoPath { get; set; }
         public int StatusId { get; set; }
         public int CarColorId { get; set; }
         public System.DateTime DateOfService { get; set; }
