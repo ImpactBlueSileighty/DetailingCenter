@@ -5,34 +5,204 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DetailingCenter.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="900"
+      d:DesignHeight="700" 
+      d:DesignWidth="900"
+      FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans"
       Title="ServicePage">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="7*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
 
-        <ListView x:Name="listClients" 
-                  Background="#FFADB2B5"
-                  FontSize="16">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="30"/>
-                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding LastName}" Width="100"/>
-                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding FirstName}" Width="100"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
 
-        <Grid Grid.Row="1" Background="#FFADB2B5">
-            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button x:Name="addBtn" Content="Add" Width="100" Height="30"  Style="{DynamicResource ButtonStyle3}"/>
-                <Button x:Name="changeBtn" Content="Change" Width="100" Height="30" Margin="5 0 5 0"  Style="{DynamicResource ButtonStyle3}"/>
-                <Button x:Name="deleteBtn" Content="Delete" Width="100" Height="30" Style="{DynamicResource ButtonStyle3}"/>
+        <!-- Filter -->
+
+        <Grid Grid.Row="0" Background="#FFF6F7F9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="15"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+
+            <!-- Label -->
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="1" 
+                       Text="FILTERS"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       FontSize="15"
+                       
+                       Foreground="#FF7A8087"
+                       FontWeight="Bold"/>
+
+            
+
+            <!-- Search by Service -->
+
+            <StackPanel Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalAlignment="Center">
+                <Separator Margin="0 0 0 10"/>
+                <TextBlock Text="Service Type"
+                           FontSize="17"
+                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"/>
+
+                <ComboBox VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch" 
+                          Style="{StaticResource ComboBoxStyle1}"
+                          Margin="0 0 0 10"
+                          ItemsSource="{Binding ServiceTypesCmb}"
+                          SelectedItem="{Binding SelectedServiceTypeCmb}"
+                          DisplayMemberPath="Name"/>
+
+                <TextBlock Text="Service"
+                           FontSize="17"
+                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"/>
+
+                <ComboBox VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch" 
+                          Style="{StaticResource ComboBoxStyle1}"
+                          ItemsSource="{Binding ServicesCmb}"
+                          SelectedItem="{Binding SelectedServiceCmb}"
+                          DisplayMemberPath="Name"/>
+
+            </StackPanel>
+
+            <!-- Cost Filter -->
+
+            <StackPanel Grid.Row="2"
+                        Grid.Column="1"
+                        VerticalAlignment="Top">
+                <Separator Margin="0 0 0 10"/>
+
+                <TextBlock Text="Cost range"
+                           FontSize="17"
+                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"
+                           Margin="0 0 0 10"/>
+                
+                <TextBlock Text="From"
+                               FontSize="15"
+                               FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"/>
+                <TextBox Style="{StaticResource TextBoxStyle}"
+                         MaxLength="7"
+                         Text="{Binding InputRangeCostFrom, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <TextBlock Text="To"
+                           FontSize="15"
+                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"
+                           Margin="0 5 0 0"/>
+                <TextBox Style="{StaticResource TextBoxStyle}"
+                         MaxLength="7"
+                         Text="{Binding InputRangeCostTo, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+            </StackPanel>
+
+            <WrapPanel Grid.Row="6" 
+                       Grid.Column="1"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center">
+
+                <Button x:Name="editBtn" Content="Edit" Width="70" Height="33"  Click="editBtn_Click"  Style="{StaticResource AddEditDeleteButtonsStyle}"/>
+                <Button x:Name="deleteBtn" Content="Delete" Width="70" Height="33" Margin="10 0 0 0"  Click="deleteBtn_Click"  Style="{StaticResource AddEditDeleteButtonsStyle}"/>
             </WrapPanel>
+
         </Grid>
+
+        <Grid Grid.Column="1"
+              Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="15"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="7*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <TextBlock Grid.Column="0"
+                           Text="Services"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="20"
+                           FontWeight="Bold"/>
+
+                <!-- Add Client Btn -->
+
+                <Button x:Name="addServiceBtn"
+                        Grid.Column="1"
+                        Content="+ Add service"
+                        Width="100"
+                        Height="33"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource AddEditDeleteButtonsStyle}"
+                        Click="addServiceBtn_Click"/>
+
+
+            </Grid>
+
+            <ListView Grid.Row="1"
+                      Grid.Column="1"
+                      Cursor="Hand"
+                      FontSize="16"
+                      HorizontalAlignment="Stretch"
+                      ItemsSource="{Binding Services}"
+                      SelectedItem="{Binding SelectedService}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment"
+                                Value="Stretch" />
+                        <Setter Property="MinHeight" Value="150"/>
+                        <Setter Property="MaxHeight" Value="200"/>
+
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="40"/>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Type">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ServiceType.Name}" MinWidth="300"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Duration" DisplayMemberBinding="{Binding DurationFormat}" Width="80"/>
+                        <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding CostFormat}"/>
+                        <GridViewColumn Header="Description">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding DescriptionFormat}" MaxWidth="700"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
     </Grid>
+
 </Page>

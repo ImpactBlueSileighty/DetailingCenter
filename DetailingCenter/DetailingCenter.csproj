@@ -123,6 +123,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Windows\EditServiceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\ExceptionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -204,9 +208,11 @@
     <Compile Include="ViewModel\ClientPage_VM.cs" />
     <Compile Include="ViewModel\EditClientWindow_VM.cs" />
     <Compile Include="ViewModel\EditOrderWindow_VM.cs" />
+    <Compile Include="ViewModel\EditServiceWindow_VM.cs" />
     <Compile Include="ViewModel\ExceptionWindow_VM.cs" />
     <Compile Include="ViewModel\MessageWindow_VM.cs" />
     <Compile Include="ViewModel\OrderPage_VM.cs" />
+    <Compile Include="ViewModel\ServicePage_VM.cs" />
     <Compile Include="View\Pages\OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
     </Compile>
@@ -224,6 +230,9 @@
     </Compile>
     <Compile Include="View\Windows\EditOrderWindow.xaml.cs">
       <DependentUpon>EditOrderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\EditServiceWindow.xaml.cs">
+      <DependentUpon>EditServiceWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\ExceptionWindow.xaml.cs">
       <DependentUpon>ExceptionWindow.xaml</DependentUpon>

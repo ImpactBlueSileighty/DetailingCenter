@@ -20,9 +20,34 @@ namespace DetailingCenter.Pages
     /// </summary>
     public partial class ServicePage : Page
     {
+        ServicePage_VM VM;
         public ServicePage()
         {
+            VM = new ServicePage_VM();
+            DataContext = VM;
             InitializeComponent();
+        }
+
+        private void addServiceBtn_Click(object sender, RoutedEventArgs e) => OpenEditWindow(true);
+
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e) => VM.Delete();
+
+
+        private void editBtn_Click(object sender, RoutedEventArgs e) => OpenEditWindow(false);
+      
+        private void OpenEditWindow(bool NewOrder)
+        {
+            this.Opacity = 0.4;
+            if (NewOrder)
+            {
+                VM.Add();
+            }
+            else
+            {
+                VM.Edit();
+            }
+            this.Opacity = 1;
         }
     }
 }

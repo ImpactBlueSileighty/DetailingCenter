@@ -191,7 +191,7 @@
                        
                        Width="40"
                        Height="40" Grid.Column="0"/>
-                    <TextBlock Text="Service"
+                    <TextBlock Text="Services"
                                VerticalAlignment="Center"
                                Grid.Column="1"
                                Style="{DynamicResource TextBlockStyle1}" />

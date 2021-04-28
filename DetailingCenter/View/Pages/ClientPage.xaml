@@ -83,11 +83,7 @@
                            FontSize="17"
                            FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"/>
 
-                <TextBox VerticalAlignment="Center"
-                         HorizontalAlignment="Stretch" 
-                         Height="30"
-                         FontSize="17"
-                         Margin="0 0 0 10" 
+                <TextBox Margin="0 0 0 10" 
                          MaxLength="11"
                          Style="{StaticResource TextBoxStyle}" 
                          Text="{Binding InputPhone, UpdateSourceTrigger=PropertyChanged}"/>
@@ -96,9 +92,7 @@
                            FontSize="17"
                            FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"/>
 
-                <TextBox VerticalAlignment="Center"
-                         HorizontalAlignment="Stretch" 
-                         Style="{StaticResource TextBoxStyle}"
+                <TextBox Style="{StaticResource TextBoxStyle}"
                          Text="{Binding InputEmail, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 

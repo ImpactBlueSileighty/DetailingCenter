@@ -1,13 +1,12 @@
-﻿<Window x:Class="DetailingCenter.View.Windows.EditClientWindow"
+﻿<Window x:Class="DetailingCenter.View.Windows.EditServiceWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DetailingCenter.View.Windows"
-        xmlns:wpfx="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit/extended" 
         mc:Ignorable="d"
-        Title="EditClientWindow" 
-        Height="500" 
+        Title="EditServiceWindow" 
+        Height="600" 
         Width="400"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
@@ -15,7 +14,6 @@
         Background="#FFF6F7F9"
         FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans">
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
@@ -62,9 +60,10 @@
             </Button>
         </Grid>
 
+
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="1*"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="25"/>
@@ -74,83 +73,98 @@
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="25"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="10"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
+             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
-
-            <!-- Name -->
             
+            <!-- Name -->
+
             <TextBlock Grid.Row="1"
                        Grid.Column="1"
                        Text="Name"
                        Style="{StaticResource AddEditTbxStyle}"/>
-            
+
             <TextBox Grid.Row="2"
                      Grid.Column="1"
                      MaxLength="50"
                      Style="{StaticResource TextBoxStyle}"
                      Text="{Binding InputName}"/>
             
-            <!-- Surname -->
+            <!-- Type -->
 
             <TextBlock Grid.Row="3"
                        Grid.Column="1"
-                       Text="Surname"
+                       Text="Type"
                        Style="{StaticResource AddEditTbxStyle}"/>
 
-            <TextBox Grid.Row="4"
-                     Grid.Column="1"
-                     MaxLength="50"
-                     Style="{StaticResource TextBoxStyle}"
-                     Text="{Binding InputSurname}"/>
-
-            <!-- Contacts -->
+            <ComboBox ItemsSource="{Binding ServiceTypes}"
+                      SelectedItem="{Binding SelectedServiceType}"
+                      DisplayMemberPath="Name"
+                      Style="{StaticResource ComboBoxStyle1}"
+                      Grid.Row="4"
+                      Grid.Column="1"
+                      VerticalAlignment="Center"/>
+            
+            <!-- Duration -->
 
             <TextBlock Grid.Row="5"
                        Grid.Column="1"
-                       Text="Phone"
+                       Text="Duration"
                        Style="{StaticResource AddEditTbxStyle}"/>
 
             <TextBox Grid.Row="6"
-                     Grid.Column="1"
-                     MaxLength="11"
-                     Style="{StaticResource TextBoxStyle}"
-                     Text="{Binding InputPhone}"/>
+                    Grid.Column="1"
+                     MaxLength="6"
+                    Style="{StaticResource TextBoxStyle}"
+                    Text="{Binding InputDuration}"/>
+            
+            <!-- Cost -->
 
             <TextBlock Grid.Row="7"
                        Grid.Column="1"
-                       Text="Email"
+                       Text="Cost"
                        Style="{StaticResource AddEditTbxStyle}"/>
 
             <TextBox Grid.Row="8"
-                     Grid.Column="1"
-                     MaxLength="50"
-                     Style="{StaticResource TextBoxStyle}"
-                     Text="{Binding InputEmail}"/>
-            
-            <!-- Gender -->
+                    Grid.Column="1"
+                     MaxLength="10"
+                    Style="{StaticResource TextBoxStyle}"
+                    Text="{Binding InputCost}"/>
+
+            <!-- Description -->
 
             <TextBlock Grid.Row="9"
                        Grid.Column="1"
-                       Text="Gender"
+                       Text="Description"
                        Style="{StaticResource AddEditTbxStyle}"/>
 
-            <ComboBox ItemsSource="{Binding Genders}"
-                      SelectedItem="{Binding SelectedGender}"
-                      DisplayMemberPath="Name"
-                      Style="{StaticResource ComboBoxStyle1}"
-                      Grid.Row="10"
-                      Grid.Column="1"
-                      VerticalAlignment="Center"
-                      HorizontalAlignment="Stretch"/>
-            
+            <TextBox Grid.Row="10"
+                     Grid.Column="1"        
+                     MaxLength="512"
+                     TextWrapping="Wrap"
+                     FontSize="18"
+                     Foreground="#FF171E28"
+                     VerticalAlignment="Stretch"
+                     Text="{Binding InputDescription}">
+                <TextBox.Style>
+                    <Style>
+                        <Style.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="4"/>
+                            </Style>
+                            
+                        </Style.Resources>
+                    </Style>
+                </TextBox.Style>
+
+            </TextBox>
+
             <!-- Submit/Cancel Btn-->
 
             <WrapPanel Grid.Row="11"
@@ -174,7 +188,8 @@
                         Click="cancelBtn_Click"/>
             </WrapPanel>
 
-
         </Grid>
+
+
     </Grid>
 </Window>

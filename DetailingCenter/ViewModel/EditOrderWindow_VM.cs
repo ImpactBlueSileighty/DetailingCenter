@@ -220,8 +220,15 @@ namespace DetailingCenter
                         Service = SelectedService,
                         Employee = SelectedEmployee,
                         OrderStatus = SelectedOrderStatus,
-                        DateOfService = SelectedDate
+                        DateOfService = SelectedDate,
+
+                        
+                        
                     };
+
+                    SelectedClient.Service = SelectedService;
+                    SelectedClient.LastVisit = DateTime.Now;
+
                     context.Order.Add(_currentOrder);
                 }
                 else
@@ -234,17 +241,20 @@ namespace DetailingCenter
                     _currentOrder.Employee = SelectedEmployee;
                     _currentOrder.OrderStatus = SelectedOrderStatus;
                     _currentOrder.DateOfService = SelectedDate;
+                    _currentOrder.Client.Service = SelectedService;
+                    _currentOrder.Client.LastVisit = DateTime.Now;
+
 
                 }
 
                 context.SaveChanges();
             }
-            catch
+            catch 
             {
                 string message = "You have not completed all the fields.";
                 var exceptionWindow = new ExceptionWindow(message);
                 exceptionWindow.ShowDialog();
-
+               
             }
 
         }

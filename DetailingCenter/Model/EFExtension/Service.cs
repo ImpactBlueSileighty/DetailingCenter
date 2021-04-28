@@ -21,11 +21,49 @@ namespace DetailingCenter.Model.EF
                     return "$" + (Int32)Cost;
                 }
 
+            }
+        }
+
+        public string DurationFormat
+        {
+            get
+            {
+                if (!Duration.ToString().EndsWith("00") && Duration != 0)
+                {
+                    if (Math.Truncate(Duration) != 0)
+                    {
+                        return Math.Truncate(Duration).ToString() + " h " + Math.Round(((Duration - Math.Truncate(Duration)) * 60)).ToString() + " m ";
+                    }
+                    else
+                    {
+                        return Math.Round((Duration * 60)).ToString() + " m";
+                    }
+
+
+
+                }
+                else
+                {
+                    return Math.Truncate(Duration).ToString() + " h";
+                }
 
 
             }
         }
 
-     
+        public string DescriptionFormat
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(Description))
+                {
+                    return "No Description";
+                }
+                else
+                {
+                    return Description;
+                }
+            }
+        }
     }
 }

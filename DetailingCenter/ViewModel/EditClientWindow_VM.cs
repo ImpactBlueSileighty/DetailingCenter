@@ -66,47 +66,57 @@ namespace DetailingCenter
 
             try
             {
-                if (InputPhone.Length < 11 || !IsDigitsOnly(InputPhone))
+                if (!String.IsNullOrEmpty(InputPhone))
+                {
+                    if (InputPhone.Length < 11 || !IsDigitsOnly(InputPhone))
+                    {
+                        string message = "Phone must have 11 digits.";
+                        var exceptionWindow = new ExceptionWindow(message);
+                        exceptionWindow.ShowDialog();
+                    }
+                    else if (Regex.IsMatch(InputEmail, emailPattern) == false)
+                    {
+                        string message = "Incorrect Email format.";
+                        var exceptionWindow = new ExceptionWindow(message);
+                        exceptionWindow.ShowDialog();
+                    }
+                    else
+                    {
+                        if (_currentClient == null)
+                        {
+
+                            _currentClient = new Client()
+                            {
+                                Name = InputName,
+                                SurName = InputSurname,
+                                Phone = InputPhone,
+                                Email = InputEmail,
+                                Gender = SelectedGender,
+                                LastVisit = DateTime.Parse("01/01/01"),
+
+                            };
+                            context.Client.Add(_currentClient);
+
+
+                        }
+                        else
+                        {
+                            _currentClient.Name = InputName;
+                            _currentClient.SurName = InputSurname;
+                            _currentClient.Phone = InputPhone;
+                            _currentClient.Email = InputEmail;
+                            _currentClient.Gender = SelectedGender;
+                        }
+                        context.SaveChanges();
+                    }
+                }
+                else
                 {
                     string message = "Phone must have 11 digits.";
                     var exceptionWindow = new ExceptionWindow(message);
                     exceptionWindow.ShowDialog();
                 }
-                else if (Regex.IsMatch(InputEmail, emailPattern) == false)
-                {
-                    string message = "Incorrect Email format.";
-                    var exceptionWindow = new ExceptionWindow(message);
-                    exceptionWindow.ShowDialog();
-                }
-                else
-                {
-                    if (_currentClient == null)
-                    {
-
-                        _currentClient = new Client()
-                        {
-                            Name = InputName,
-                            SurName = InputSurname,
-                            Phone = InputPhone,
-                            Email = InputEmail,
-                            Gender = SelectedGender,
-                            LastVisit = DateTime.Parse("01/01/01"),
-
-                        };
-                        context.Client.Add(_currentClient);
-
-
-                    }
-                    else
-                    {
-                        _currentClient.Name = InputName;
-                        _currentClient.SurName = InputSurname;
-                        _currentClient.Phone = InputPhone;
-                        _currentClient.Email = InputEmail;
-                        _currentClient.Gender = SelectedGender;
-                    }
-                    context.SaveChanges();
-                }
+                
 
                 
             }
@@ -147,7 +157,7 @@ namespace DetailingCenter
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string name)
+        private void OnPropertyChanged(string name)
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(name));
