@@ -12,7 +12,15 @@ namespace DetailingCenter.Model.EF
         {
             get
             {
-                return Name + " " + SurName;  
+                return Name + " " + Surname;  
+            }
+        }
+
+        public string DateFormat
+        {
+            get
+            {
+                return DateOfEmployment.ToString("d");
             }
         }
     }

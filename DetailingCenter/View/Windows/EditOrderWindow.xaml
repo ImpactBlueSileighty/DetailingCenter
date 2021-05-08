@@ -285,7 +285,7 @@
                         Grid.Column="1"
                         VerticalAlignment="Center"/>
 
-            <!-- Buttons -->
+            <!-- Submit/Cancel Buttons -->
 
             <WrapPanel Grid.Row="17"
                        Grid.Column="1"

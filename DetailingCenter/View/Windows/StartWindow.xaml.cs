@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DetailingCenter.Pages;
+using DetailingCenter.View.Pages;
 using DetailingCenter.Windows;
 
 namespace DetailingCenter
@@ -72,7 +73,7 @@ namespace DetailingCenter
                 navigationRec4.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
 
                 clientsBtn.IsChecked = false;
-                financeBtn.IsChecked = false;
+                employeeBtn.IsChecked = false;
                 serviceBtn.IsChecked = false;
                 navigationFrame.Navigate(op);
 
@@ -90,7 +91,7 @@ namespace DetailingCenter
                 navigationRec4.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
 
                 orderBtn.IsChecked = false;
-                financeBtn.IsChecked = false;
+                employeeBtn.IsChecked = false;
                 serviceBtn.IsChecked = false;
                 navigationFrame.Navigate(cp);
 
@@ -110,15 +111,16 @@ namespace DetailingCenter
 
                 orderBtn.IsChecked = false;
                 clientsBtn.IsChecked = false;
-                financeBtn.IsChecked = false;
+                employeeBtn.IsChecked = false;
 
                 navigationFrame.Navigate(sp);
             }
         }
 
-        private void financeBtn_Click(object sender, RoutedEventArgs e)
+        private void employeeBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (financeBtn.IsChecked == true)
+            EmployeePage ep = new EmployeePage();
+            if (employeeBtn.IsChecked == true)
             {
                 navigationRec4.Fill = Brushes.Orange;
                 navigationRec1.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
@@ -129,11 +131,8 @@ namespace DetailingCenter
                 clientsBtn.IsChecked = false;
                 serviceBtn.IsChecked = false;
 
+                navigationFrame.Navigate(ep);
             }
         }
-
-
-
-
     }
 }

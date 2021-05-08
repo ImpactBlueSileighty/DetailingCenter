@@ -99,6 +99,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Pages\EmployeePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pages\OrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +120,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\EditClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\EditEmployeeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -189,6 +197,9 @@
     <Compile Include="Model\EF\OrderStatus.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\EF\Role.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\EF\Service.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
@@ -207,12 +218,17 @@
     <Compile Include="SampleData\SampleData.cs" />
     <Compile Include="ViewModel\ClientPage_VM.cs" />
     <Compile Include="ViewModel\EditClientWindow_VM.cs" />
+    <Compile Include="ViewModel\EditEmployeeWindow_VM.cs" />
     <Compile Include="ViewModel\EditOrderWindow_VM.cs" />
     <Compile Include="ViewModel\EditServiceWindow_VM.cs" />
+    <Compile Include="ViewModel\EmployeePage_VM.cs" />
     <Compile Include="ViewModel\ExceptionWindow_VM.cs" />
     <Compile Include="ViewModel\MessageWindow_VM.cs" />
     <Compile Include="ViewModel\OrderPage_VM.cs" />
     <Compile Include="ViewModel\ServicePage_VM.cs" />
+    <Compile Include="View\Pages\EmployeePage.xaml.cs">
+      <DependentUpon>EmployeePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
     </Compile>
@@ -227,6 +243,9 @@
     </Compile>
     <Compile Include="View\Windows\EditClientWindow.xaml.cs">
       <DependentUpon>EditClientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\EditEmployeeWindow.xaml.cs">
+      <DependentUpon>EditEmployeeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\EditOrderWindow.xaml.cs">
       <DependentUpon>EditOrderWindow.xaml</DependentUpon>
@@ -287,25 +306,13 @@
   <ItemGroup>
     <Resource Include="Resources\Images\clientIcon.png" />
     <Resource Include="Resources\Images\serviceIcon.png" />
-    <Resource Include="Resources\Images\financeIcon.png" />
+    <Resource Include="Resources\Images\employeeIcon.png" />
     <Resource Include="Resources\Images\windowSizeIcon.png" />
     <Resource Include="Resources\Images\windowCloseIcon.png" />
     <Resource Include="Resources\Images\taskBarIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Model\EF\ModelDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelDB.edmx</DependentUpon>
-      <LastGenOutput>ModelDB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\EF\ModelDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelDB.edmx</DependentUpon>
-      <LastGenOutput>ModelDB.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="Resources\OrderPhotoes\1.jpg">
@@ -332,6 +339,18 @@
     <AdditionalFiles Include="Resources\OrderPhotoes\HOR_XB1_Subaru_Impreza_98talaf5rn.aw4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AdditionalFiles>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\EF\ModelDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelDB.edmx</DependentUpon>
+      <LastGenOutput>ModelDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\EF\ModelDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelDB.edmx</DependentUpon>
+      <LastGenOutput>ModelDB.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

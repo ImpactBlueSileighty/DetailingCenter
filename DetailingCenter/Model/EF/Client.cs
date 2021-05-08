@@ -22,7 +22,7 @@ namespace DetailingCenter.Model.EF
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public string SurName { get; set; }
+        public string Surname { get; set; }
         public string GenderCode { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }

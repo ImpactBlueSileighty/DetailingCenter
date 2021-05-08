@@ -34,7 +34,7 @@ namespace DetailingCenter.ViewModel
             ServiceTypes = new List<ServiceType>();
             ServiceTypes.Add(new ServiceType
             {
-                Name = "Enter the type"
+                Name = "Select type"
             });
 
             ServiceTypes.AddRange(context.ServiceType.ToList());
@@ -58,45 +58,50 @@ namespace DetailingCenter.ViewModel
 
         public void SaveChanges() // Edit or Add Service data and save it to DB
         {
-
-            try
+            if (!String.IsNullOrEmpty(InputName)
+                 || !String.IsNullOrEmpty(InputDuration)
+                 || !String.IsNullOrEmpty(InputCost.ToString()))
             {
-
-                if (_currentService == null)
+                if (SelectedServiceType == ServiceTypes[0] || SelectedServiceType == null)
                 {
-                    _currentService = new Service()
-                    {
-                        Name = InputName,
-                        ServiceType = SelectedServiceType,
-                        Duration = Convert.ToDecimal(InputDuration),
-                        Cost = Convert.ToDecimal(InputCost),
-                        Description = InputDescription
-                    };
-                    context.Service.Add(_currentService);
+                    string message = "You need to select service type.";
+                    var exceptionWindow = new ExceptionWindow(message);
+                    exceptionWindow.ShowDialog();
                 }
                 else
                 {
-                    _currentService.Name = InputName;
-                    _currentService.ServiceType = SelectedServiceType;
-                    _currentService.Duration = Convert.ToDecimal(InputDuration);
-                    _currentService.Cost = Convert.ToDecimal(InputCost);
-                    _currentService.Description = InputDescription;
+                    if (_currentService == null)
+                    {
+                        _currentService = new Service()
+                        {
+                            Name = InputName,
+                            ServiceType = SelectedServiceType,
+                            Duration = Convert.ToDecimal(InputDuration),
+                            Cost = Convert.ToDecimal(InputCost),
+                            Description = InputDescription
+                        };
+                        context.Service.Add(_currentService);
+                    }
+                    else
+                    {
+                        _currentService.Name = InputName;
+                        _currentService.ServiceType = SelectedServiceType;
+                        _currentService.Duration = Convert.ToDecimal(InputDuration);
+                        _currentService.Cost = Convert.ToDecimal(InputCost);
+                        _currentService.Description = InputDescription;
+                    }
+                    context.SaveChanges();
                 }
-                context.SaveChanges();
+
 
             }
-            catch
+            else
             {
-                string message = "You have not completed all the fields.";
+                string message = "You need to complete all the fields.";
                 var exceptionWindow = new ExceptionWindow(message);
                 exceptionWindow.ShowDialog();
-
             }
         }
-
-
-
-
 
         //Implementation of the interface INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

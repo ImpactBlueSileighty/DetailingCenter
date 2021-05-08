@@ -133,35 +133,7 @@ namespace DetailingCenter
         }
 
 
-        private void Filter()
-        {
-            Clients = context.Client.ToList();
-
-            if (SelectedClientCmb != null && SelectedClientCmb.Name != "All")
-                Clients = Clients.Where(e => e == SelectedClientCmb).ToList();
-
-            if (!string.IsNullOrWhiteSpace(InputPhone))
-                Clients = Clients.Where(e => e.Phone.Contains(InputPhone)).ToList();
-
-            if (!string.IsNullOrWhiteSpace(InputEmail))
-                Clients = Clients.Where(e => e.Email.Contains(InputEmail)).ToList();
-
-            if (SelectedServiceType != null && SelectedServiceType.Name != "All")
-                Clients = Clients.Where(e => e.Service.ServiceType == SelectedServiceType).ToList();
-
-            if (SelectedService != null)
-                Clients = Clients.Where(e => e.Service == SelectedService).ToList();
-
-            if (SelectedDate != null && SelectedDate != DateTime.MinValue)
-            {
-                Clients = Clients.Where(e => (e.LastVisit <= SelectedDate.AddDays(1)) && e.LastVisit >= SelectedDate.Subtract(new TimeSpan(1, 0, 0, 0))).ToList();
-            }
-
-
-
-
-            OnPropertyChanged(nameof(Clients));
-        }
+        
 
         public void Add()
         {
@@ -211,6 +183,36 @@ namespace DetailingCenter
             Filter();
         }
 
+        private void Filter()
+        {
+            Clients = context.Client.ToList();
+
+            if (SelectedClientCmb != null && SelectedClientCmb.Name != "All")
+                Clients = Clients.Where(e => e == SelectedClientCmb).ToList();
+
+            if (!string.IsNullOrWhiteSpace(InputPhone))
+                Clients = Clients.Where(e => e.Phone.Contains(InputPhone)).ToList();
+
+            if (!string.IsNullOrWhiteSpace(InputEmail))
+                Clients = Clients.Where(e => e.Email.Contains(InputEmail)).ToList();
+
+            if (SelectedServiceType != null && SelectedServiceType.Name != "All")
+                Clients = Clients.Where(e => e.Service.ServiceType == SelectedServiceType).ToList();
+
+            if (SelectedService != null)
+                Clients = Clients.Where(e => e.Service == SelectedService).ToList();
+
+            if (SelectedDate != null && SelectedDate != DateTime.MinValue)
+            {
+                Clients = Clients.Where(e => (e.LastVisit <= SelectedDate.AddDays(1)) && e.LastVisit >= SelectedDate.Subtract(new TimeSpan(1, 0, 0, 0))).ToList();
+            }
+
+
+
+
+            OnPropertyChanged(nameof(Clients));
+        }
+
         public void NullSelection()
         {
             string message = "You have not selected a client.";
@@ -218,6 +220,7 @@ namespace DetailingCenter
             exceptionWindow.ShowDialog();
         }
 
+        //Implementation of the interface INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
         {

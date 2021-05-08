@@ -30,7 +30,7 @@ namespace DetailingCenter.SampleData
                 Client = new Client()
                 {
                     Name = "Edick",
-                    SurName = "Egg",
+                    Surname = "Egg",
                     Phone = "+7955992222",
                     Email = "llgmgll@mail.com"
                 },

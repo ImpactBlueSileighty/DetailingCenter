@@ -17,7 +17,6 @@ namespace DetailingCenter
 
         public string InputSurname { get; set; }
 
-
         public string InputPhone { get; set; }
 
         public string InputEmail { get; set; }
@@ -35,7 +34,7 @@ namespace DetailingCenter
             Genders = new List<Gender>();
             Genders.Add(new Gender
             {
-                Name = "Enter the gender"
+                Name = "Select gender"
             });
 
             Genders.AddRange(context.Gender.ToList());
@@ -44,7 +43,7 @@ namespace DetailingCenter
             if (_currentClient != null)
             {
                 InputName = _currentClient.Name;
-                InputSurname = _currentClient.SurName;
+                InputSurname = _currentClient.Surname;
                 InputPhone = _currentClient.Phone;
                 InputEmail = _currentClient.Email;
                 SelectedGender = _currentClient.Gender;
@@ -64,68 +63,64 @@ namespace DetailingCenter
         {
             string emailPattern = @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
 
-            try
+            if (!String.IsNullOrEmpty(InputName)
+                || !String.IsNullOrEmpty(InputSurname)
+                || !String.IsNullOrEmpty(InputEmail)
+                || !String.IsNullOrEmpty(InputPhone)) 
             {
-                if (!String.IsNullOrEmpty(InputPhone))
-                {
-                    if (InputPhone.Length < 11 || !IsDigitsOnly(InputPhone))
-                    {
-                        string message = "Phone must have 11 digits.";
-                        var exceptionWindow = new ExceptionWindow(message);
-                        exceptionWindow.ShowDialog();
-                    }
-                    else if (Regex.IsMatch(InputEmail, emailPattern) == false)
-                    {
-                        string message = "Incorrect Email format.";
-                        var exceptionWindow = new ExceptionWindow(message);
-                        exceptionWindow.ShowDialog();
-                    }
-                    else
-                    {
-                        if (_currentClient == null)
-                        {
-
-                            _currentClient = new Client()
-                            {
-                                Name = InputName,
-                                SurName = InputSurname,
-                                Phone = InputPhone,
-                                Email = InputEmail,
-                                Gender = SelectedGender,
-                                LastVisit = DateTime.Parse("01/01/01"),
-
-                            };
-                            context.Client.Add(_currentClient);
-
-
-                        }
-                        else
-                        {
-                            _currentClient.Name = InputName;
-                            _currentClient.SurName = InputSurname;
-                            _currentClient.Phone = InputPhone;
-                            _currentClient.Email = InputEmail;
-                            _currentClient.Gender = SelectedGender;
-                        }
-                        context.SaveChanges();
-                    }
-                }
-                else
+                if (InputPhone.Length < 11 || !IsDigitsOnly(InputPhone))
                 {
                     string message = "Phone must have 11 digits.";
                     var exceptionWindow = new ExceptionWindow(message);
                     exceptionWindow.ShowDialog();
                 }
-                
+                else if (Regex.IsMatch(InputEmail, emailPattern) == false)
+                {
+                    string message = "Incorrect Email format.";
+                    var exceptionWindow = new ExceptionWindow(message);
+                    exceptionWindow.ShowDialog();
+                }
+                else if (SelectedGender == Genders[0] || SelectedGender == null)
+                {
+                    string message = "You need to select gender.";
+                    var exceptionWindow = new ExceptionWindow(message);
+                    exceptionWindow.ShowDialog();
+                }
+                else
+                {
+                    if (_currentClient == null)
+                    {
 
-                
+                        _currentClient = new Client()
+                        {
+                            Name = InputName,
+                            Surname = InputSurname,
+                            Phone = InputPhone,
+                            Email = InputEmail,
+                            Gender = SelectedGender,
+                            LastVisit = DateTime.Parse("01/01/01"),
+
+                        };
+                        context.Client.Add(_currentClient);
+
+
+                    }
+                    else
+                    {
+                        _currentClient.Name = InputName;
+                        _currentClient.Surname = InputSurname;
+                        _currentClient.Phone = InputPhone;
+                        _currentClient.Email = InputEmail;
+                        _currentClient.Gender = SelectedGender;
+                    }
+                    context.SaveChanges();
+                }
             }
-            catch
+            else
             {
-                string message = "You have not completed all the fields.";
+                string message = "You need to complete all the fields.";
                 var exceptionWindow = new ExceptionWindow(message);
                 exceptionWindow.ShowDialog();
-
             }
 
         }

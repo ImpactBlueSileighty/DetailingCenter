@@ -1,22 +1,20 @@
-﻿<Page x:Class="DetailingCenter.Windows.ClientPage"
+﻿<Page x:Class="DetailingCenter.View.Pages.EmployeePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:DetailingCenter.Windows"
-      mc:Ignorable="d" 
+      xmlns:local="clr-namespace:DetailingCenter.View.Pages"
+      mc:Ignorable="d"  
       d:DesignHeight="700" 
       d:DesignWidth="900"
-      Title="ClientsPage"
-      FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans">
+      FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans"
+      Title="EmployeePage">
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-
 
         <!-- Filter -->
 
@@ -28,11 +26,11 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
 
@@ -48,14 +46,15 @@
                        Foreground="#FF7A8087"
                        FontWeight="Bold"/>
 
-            <!-- Search by Client-->
 
+
+            <!-- Search by Service -->
 
             <StackPanel Grid.Row="1"
                         Grid.Column="1"
                         VerticalAlignment="Center">
                 <Separator Margin="0 0 0 10"/>
-                <TextBlock Text="Client"
+                <TextBlock Text="Employee"
                            FontSize="17"
                            FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"/>
 
@@ -64,82 +63,49 @@
                           Style="{StaticResource ComboBoxStyle1}"
                           IsEditable="True"
                           
-                          ItemsSource="{Binding ClientsCmb}"
+                          ItemsSource="{Binding EmployeesCmb}"
                           DisplayMemberPath="NameFormat"
-                          SelectedItem="{Binding SelectedClientCmb}"/>
+                          SelectedItem="{Binding SelectedEmployeeCmb}"/>
 
-
-
+                
 
             </StackPanel>
 
-            <!-- Search by Contacts -->
+            <!-- Cost Filter -->
 
             <StackPanel Grid.Row="2"
                         Grid.Column="1"
-                        VerticalAlignment="Center">
+                        VerticalAlignment="Top">
                 <Separator Margin="0 0 0 10"/>
-                <TextBlock Text="Phone"
+
+                <TextBlock Text="Role"
                            FontSize="17"
-                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"/>
-
-                <TextBox Margin="0 0 0 10" 
-                         MaxLength="11"
-                         Style="{StaticResource TextBoxStyle}" 
-                         Text="{Binding InputPhone, UpdateSourceTrigger=PropertyChanged}"/>
-
-                <TextBlock Text="Email"
-                           FontSize="17"
-                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"/>
-
-                <TextBox Style="{StaticResource TextBoxStyle}"
-                         Text="{Binding InputEmail, UpdateSourceTrigger=PropertyChanged}"/>
-            </StackPanel>
-
-            <!-- Search by Service -->
-
-            <StackPanel Grid.Row="3"
-                        Grid.Column="1"
-                        VerticalAlignment="Center">
-                <Separator Margin="0 0 0 10"/>
-                <TextBlock Text="Last Service Type"
-                           FontSize="17"
-                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"/>
+                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"
+                           Margin="0 0 0 0"/>
 
                 <ComboBox VerticalAlignment="Center"
                           HorizontalAlignment="Stretch" 
-                          Style="{StaticResource ComboBoxStyle1}"
-                          Margin="0 0 0 10"
-                          ItemsSource="{Binding ServiceTypes}"
-                          SelectedItem="{Binding SelectedServiceType}"
+                          Style="{StaticResource ComboBoxStyle1}"   
+                          ItemsSource="{Binding Roles}"
+                          SelectedItem="{Binding SelectedRole}"
                           DisplayMemberPath="Name"/>
 
-                <TextBlock Text="Last Service"
-                           FontSize="17"
-                           FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"/>
-
-                <ComboBox VerticalAlignment="Center"
-                          HorizontalAlignment="Stretch" 
-                          Style="{StaticResource ComboBoxStyle1}"
-                          ItemsSource="{Binding Services}"
-                          SelectedItem="{Binding SelectedService}"
-                          DisplayMemberPath="Name"/>
 
             </StackPanel>
 
             <!-- Search by DateTime -->
 
-            <StackPanel Grid.Row="4"
+            <StackPanel Grid.Row="3"
                         Grid.Column="1"
                         VerticalAlignment="Center">
                 <Separator Margin="0 0 0 10"/>
-                <TextBlock Text="Last Visit"
+                <TextBlock Text="Date of Employee"
                            FontSize="17"
                            FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans Light"/>
 
                 <DatePicker VerticalAlignment="Center"
                           HorizontalAlignment="Stretch"
-                            SelectedDate="{Binding SelectedDate}"/>
+                            SelectedDate="{Binding SelectedDate, UpdateSourceTrigger=PropertyChanged}"/>
 
 
             </StackPanel>
@@ -170,13 +136,13 @@
 
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="120"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
 
                 <TextBlock Grid.Column="0"
-                           Text="Clients"
+                           Text="Employees"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            FontSize="20"
@@ -184,40 +150,32 @@
 
                 <!-- Add Client Btn -->
 
-                <Button x:Name="addClientBtn"
+                <Button x:Name="addEmployeeBtn"
                         Grid.Column="1"
-                        Content="+ Add client"
-                        Width="100"
+                        Content="+ Add employee"
+                        Width="120"
                         Height="33"
                         HorizontalAlignment="Right"
                         Style="{StaticResource AddEditDeleteButtonsStyle}"
-                        Click="addClientBtn_Click"/>
+                        Click="addEmployeeBtn_Click"/>
 
-                
             </Grid>
 
             <ListView Grid.Row="1"
                       Grid.Column="1"
                       Cursor="Hand"
                       FontSize="16"
-                      ItemsSource="{Binding Clients}"
-                      SelectedItem="{Binding SelectedClient}">
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="HorizontalContentAlignment"
-                                Value="Stretch" />
-                    </Style>
-                </ListView.ItemContainerStyle>
+                      HorizontalAlignment="Stretch"
+                      ItemsSource="{Binding Employees}"
+                      SelectedItem="{Binding SelectedEmployee}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="40"/>
                         <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
                         <GridViewColumn Header="Surname" DisplayMemberBinding="{Binding Surname}"/>
-                        <GridViewColumn Header="Gender" DisplayMemberBinding="{Binding Gender.Name}" />
-                        <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding PhoneFormat}"/>
-                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"/>
-                        <GridViewColumn Header="Last Service" DisplayMemberBinding="{Binding Service.Name}"/>
-                        <GridViewColumn Header="Last Visit" DisplayMemberBinding="{Binding DateFormat}" />
+                        <GridViewColumn Header="Gender" DisplayMemberBinding="{Binding Gender.Name}"/>
+                        <GridViewColumn Header="Role" DisplayMemberBinding="{Binding Role.Name}"/>
+                        <GridViewColumn Header="Date Of Employment" DisplayMemberBinding="{Binding DateFormat}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
