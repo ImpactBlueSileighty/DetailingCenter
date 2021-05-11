@@ -129,6 +129,7 @@ namespace DetailingCenter
             }
         }
 
+
         public OrderPage_VM()
         {
 
@@ -235,13 +236,10 @@ namespace DetailingCenter
 
         private void Filter()
         {
+
+
             Orders = context.Order.ToList();
-
-
-            //  CarModels = context.CarModel.ToList();
-
-
-
+            
             if (SelectedClient != null && SelectedClient.Name != "All")
                 Orders = Orders.Where(e => e.Client == SelectedClient).ToList();
 

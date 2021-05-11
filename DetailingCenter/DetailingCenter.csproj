@@ -75,6 +75,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Styles\ExitButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Styles\HeaderButtons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -136,6 +140,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\ExceptionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -223,9 +231,11 @@
     <Compile Include="ViewModel\EditServiceWindow_VM.cs" />
     <Compile Include="ViewModel\EmployeePage_VM.cs" />
     <Compile Include="ViewModel\ExceptionWindow_VM.cs" />
+    <Compile Include="ViewModel\LoginWindow_VM.cs" />
     <Compile Include="ViewModel\MessageWindow_VM.cs" />
     <Compile Include="ViewModel\OrderPage_VM.cs" />
     <Compile Include="ViewModel\ServicePage_VM.cs" />
+    <Compile Include="ViewModel\StartWindow_VM.cs" />
     <Compile Include="View\Pages\EmployeePage.xaml.cs">
       <DependentUpon>EmployeePage.xaml</DependentUpon>
     </Compile>
@@ -255,6 +265,9 @@
     </Compile>
     <Compile Include="View\Windows\ExceptionWindow.xaml.cs">
       <DependentUpon>ExceptionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\MessageWindow.xaml.cs">
       <DependentUpon>MessageWindow.xaml</DependentUpon>
@@ -341,6 +354,9 @@
     </AdditionalFiles>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Images\log_out.png" />
+    <Resource Include="Resources\Images\dc_inv.png" />
+    <Resource Include="Resources\Images\logo.png" />
     <Content Include="Model\EF\ModelDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelDB.edmx</DependentUpon>

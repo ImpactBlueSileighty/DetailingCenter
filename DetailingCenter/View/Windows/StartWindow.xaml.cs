@@ -12,8 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DetailingCenter.Model.EF;
 using DetailingCenter.Pages;
 using DetailingCenter.View.Pages;
+using DetailingCenter.View.Windows;
 using DetailingCenter.Windows;
 
 namespace DetailingCenter
@@ -23,11 +25,15 @@ namespace DetailingCenter
     /// </summary>
     public partial class StartWindow : Window
     {
-        public StartWindow()
+        
+        StartWindow_VM VM;
+        private Employee _currentEmployee;
+        public StartWindow(Employee SelectedEmployee = null)
         {
+            _currentEmployee = SelectedEmployee;  
+            VM = new StartWindow_VM(SelectedEmployee);
+            DataContext = VM;
             InitializeComponent();
-            //serviceList.ItemsSource = context.Service.ToList();
-
 
         }
 
@@ -104,6 +110,7 @@ namespace DetailingCenter
             ServicePage sp = new ServicePage();
             if (serviceBtn.IsChecked == true)
             {
+
                 navigationRec3.Fill = Brushes.Orange;
                 navigationRec1.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
                 navigationRec2.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
@@ -122,6 +129,8 @@ namespace DetailingCenter
             EmployeePage ep = new EmployeePage();
             if (employeeBtn.IsChecked == true)
             {
+                
+
                 navigationRec4.Fill = Brushes.Orange;
                 navigationRec1.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
                 navigationRec2.Fill = new SolidColorBrush(Color.FromRgb(23, 30, 40));
@@ -132,7 +141,15 @@ namespace DetailingCenter
                 serviceBtn.IsChecked = false;
 
                 navigationFrame.Navigate(ep);
+                
             }
+        }
+
+        private void logOutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            this.Close();
         }
     }
 }

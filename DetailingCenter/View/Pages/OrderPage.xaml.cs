@@ -1,4 +1,5 @@
-﻿using DetailingCenter.View.Windows;
+﻿using DetailingCenter.Model.EF;
+using DetailingCenter.View.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,6 @@ namespace DetailingCenter.Pages
     public partial class OrderPage : Page
     {
         OrderPage_VM VM;
-
 
         public OrderPage()
         {
