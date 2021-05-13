@@ -70,7 +70,7 @@ namespace DetailingCenter
                 || !String.IsNullOrEmpty(InputEmail)
                 || !String.IsNullOrEmpty(InputPhone)) 
             {
-                if (InputPhone.Length < 11 || InputPhone.Any(Char.IsDigit))
+                if (InputPhone.Length < 11 || InputPhone.Any(Char.IsLetter) || !InputPhone.StartsWith("7"))
                 {
                     string message = "Phone must have 11 digits and start with 7.";
                     var exceptionWindow = new ExceptionWindow(message);
