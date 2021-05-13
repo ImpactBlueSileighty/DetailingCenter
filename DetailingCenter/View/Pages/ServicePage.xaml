@@ -11,14 +11,13 @@
       Title="ServicePage">
 
     <Grid>
+
+        <!-- Lining -->
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-
-
-        <!-- Filter -->
 
         <Grid Grid.Row="0" Background="#FFF6F7F9">
             <Grid.ColumnDefinitions>
@@ -121,6 +120,8 @@
 
         </Grid>
 
+        <!-- Head lining -->
+        
         <Grid Grid.Column="1"
               Background="White">
             <Grid.ColumnDefinitions>
@@ -161,6 +162,8 @@
 
 
             </Grid>
+            
+            <!-- Services list -->
 
             <ListView Grid.Row="1"
                       Grid.Column="1"

@@ -27,6 +27,7 @@ namespace DetailingCenter.ViewModel
         public string WindowName { get; set; }
 
         private Employee _currentEmployee;
+        //Constructor 
         public EditEmployeeWindow_VM(Employee SelectedEmployee)
         {
             _currentEmployee = SelectedEmployee;
@@ -114,7 +115,7 @@ namespace DetailingCenter.ViewModel
             }
 
         }
-
+        // INotifyPropertyChanged interface implementation 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
         {

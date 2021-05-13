@@ -15,7 +15,7 @@ namespace DetailingCenter
         public Employee SelectedEmployee { get; set; }
         public List<Employee> Employees { get; set; }
 
-        //Filter variables
+        //Filter properties 
 
         public List<Employee> EmployeesCmb { get; private set; }
         private Employee _selectedEmployeeCmb;
@@ -88,7 +88,7 @@ namespace DetailingCenter
 
         public void Add()
         {
-            var editEmployeeWindow = new EditEmployeeWindow(SelectedEmployee);
+            var editEmployeeWindow = new EditEmployeeWindow();
 
             editEmployeeWindow.ShowDialog();
             Filter();

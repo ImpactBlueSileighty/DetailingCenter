@@ -16,6 +16,7 @@
     
     
     <Grid>
+        <!-- Lining -->
         
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -70,6 +71,8 @@
 
 
         </Grid>
+        
+        <!-- Message field -->
         <Grid Grid.Row="1"
               Grid.Column="0">
             <Grid.RowDefinitions>
@@ -84,6 +87,7 @@
                        TextAlignment="Center"
                        FontSize="18"/>
 
+            <!-- Confirm/Cancel btns -->
 
             <WrapPanel Grid.Row="1"
                        Grid.Column="0"

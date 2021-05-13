@@ -27,6 +27,7 @@ namespace DetailingCenter.ViewModel
 
         private Service _currentService;
 
+        //Constructor 
         public EditServiceWindow_VM(Service SelectedService)
         {
             _currentService = SelectedService;

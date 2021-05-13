@@ -27,6 +27,8 @@ namespace DetailingCenter
         public string WindowName { get; set; }
 
         private Client _currentClient;
+
+        //Constructor 
         public EditClientWindow_VM(Client SelectedClient)
         {
             _currentClient = SelectedClient;
@@ -150,7 +152,7 @@ namespace DetailingCenter
             }
 
         }
-
+        // INotifyPropertyChanged interface implementation 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
         {

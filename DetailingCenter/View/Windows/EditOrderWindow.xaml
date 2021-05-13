@@ -14,7 +14,7 @@
         Background="#FFF6F7F9" Closed="Window_Closed">
 
     <Grid>
-
+        <!-- Lining -->
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
@@ -63,6 +63,7 @@
 
         </Grid>
 
+        <!-- Body lining -->
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>

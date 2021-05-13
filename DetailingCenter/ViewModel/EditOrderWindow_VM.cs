@@ -86,6 +86,8 @@ namespace DetailingCenter
         public string WindowName { get; set; }
 
         private Order _currentOrder;
+
+        //Constructor 
         public EditOrderWindow_VM(Order SelectedOrder)
         {
 
@@ -181,6 +183,7 @@ namespace DetailingCenter
             OnPropertyChanged(nameof(PhotoPathFormat));
         }
 
+        //Delete photo from explorer
         public void Cancel()
         {
 

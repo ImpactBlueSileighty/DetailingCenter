@@ -106,7 +106,7 @@
             </Grid.RowDefinitions>
 
 
-            <!-- Order Calendar Button -->
+            <!-- Orders Button -->
 
             <Rectangle x:Name="navigationRec1" 
                        Fill="Orange"
@@ -173,7 +173,7 @@
 
 
 
-            <!-- Service Button-->
+            <!-- Services Button-->
             <Rectangle x:Name="navigationRec3" 
                        Fill="#FF171E28"
                        Grid.Row="2"/>
@@ -204,7 +204,7 @@
                 </Grid>
             </ToggleButton>
 
-            <!-- Employee Button-->
+            <!-- Employees Button-->
             <Rectangle x:Name="navigationRec4" 
                        Fill="#FF171E28"
                        Grid.Row="3"/>
@@ -302,8 +302,8 @@
         </Grid>
 
 
-        <!-- listview -->
-
+        
+        <!-- Page navigator -->
         <Frame x:Name="navigationFrame"
                Grid.Column="1" 
                Grid.Row="1"

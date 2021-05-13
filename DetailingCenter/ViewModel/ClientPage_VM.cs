@@ -15,7 +15,7 @@ namespace DetailingCenter
         public List<Client> Clients { get; set; }
         public Client SelectedClient { get; set; }
 
-
+        //Filter properties 
         public List<Client> ClientsCmb { get; private set; }
         private Client _selectedClientCmb;
         public Client SelectedClientCmb
@@ -102,6 +102,8 @@ namespace DetailingCenter
             }
         }
 
+        //Constructor
+
         public ClientPage_VM()
         {
 
@@ -133,8 +135,8 @@ namespace DetailingCenter
         }
 
 
-        
 
+        //Method for add data
         public void Add()
         {
             var editClientWindow = new EditClientWindow();
@@ -144,6 +146,7 @@ namespace DetailingCenter
 
         }
 
+        //Method for edit data
         public void Edit()
         {
 
@@ -161,6 +164,7 @@ namespace DetailingCenter
             Filter();
         }
 
+        //Method for delete data
         public void Delete()
         {
             if (SelectedClient != null)
@@ -183,6 +187,7 @@ namespace DetailingCenter
             Filter();
         }
 
+        //Filter
         private void Filter()
         {
             Clients = context.Client.ToList();

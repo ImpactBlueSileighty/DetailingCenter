@@ -14,6 +14,8 @@
         Background="#FFF6F7F9"
         FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans">
     <Grid>
+        
+        <!-- Lining -->
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
@@ -24,6 +26,7 @@
                 BorderThickness="1"
                 BorderBrush="Gray"/>
 
+        <!-- Header -->
         <Grid Grid.Row="0"
               Background="#FF6464DE" 
               x:Name="headerGrid"
@@ -61,6 +64,7 @@
 
         </Grid>
 
+        <!-- Body lining -->
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>

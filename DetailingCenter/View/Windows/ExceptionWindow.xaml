@@ -14,6 +14,7 @@
         FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans">
     <Grid>
 
+        <!-- Lining -->
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
@@ -67,6 +68,8 @@
 
 
         </Grid>
+        
+        <!-- Message field -->
         <Grid Grid.Row="1"
               Grid.Column="0">
             <Grid.RowDefinitions>
@@ -82,7 +85,7 @@
                        FontSize="18"/>
 
 
-
+           <!-- Confirm btn -->
             <Button Grid.Row="1"
                     HorizontalAlignment="Center"
                     x:Name="confirmBtn" 

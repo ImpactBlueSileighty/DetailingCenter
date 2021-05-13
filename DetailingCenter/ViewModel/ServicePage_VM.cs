@@ -17,7 +17,7 @@ namespace DetailingCenter
         public Service SelectedService { get; set; }
         public List<Service> Services { get; set; }
 
-        //Filter
+        //Filter properties 
 
         public List<ServiceType> ServiceTypesCmb { get; private set; }
         private ServiceType _selectedServiceTypeCmb;
@@ -82,7 +82,7 @@ namespace DetailingCenter
         }
 
 
-
+        //Constructor
         public ServicePage_VM()
         {
             ServicesCmb = context.Service.ToList();
@@ -100,6 +100,7 @@ namespace DetailingCenter
             Filter();
         }
 
+        //Method for add data
         public void Add()
         {
             var editServiceWindow = new EditServiceWindow();
@@ -108,6 +109,7 @@ namespace DetailingCenter
             Filter();
         }
 
+        //Method for edit data
         public void Edit()
         {
             if (SelectedService != null)
@@ -124,6 +126,7 @@ namespace DetailingCenter
             Filter();
         }
 
+        //Method for delete data
         public void Delete()
         {
             if (SelectedService != null)
@@ -146,6 +149,7 @@ namespace DetailingCenter
             Filter();
         }
 
+        //Filter
         private void Filter()
         {
             Services = context.Service.ToList();
@@ -172,6 +176,7 @@ namespace DetailingCenter
             exceptionWindow.ShowDialog();
         }
 
+        //Implementation of the interface INotifyPropertyChanged 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
         {

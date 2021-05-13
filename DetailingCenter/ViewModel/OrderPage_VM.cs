@@ -19,8 +19,7 @@ namespace DetailingCenter
         public Order SelectedOrder { get; set; }
         public List<Order> Orders { get; set; }
 
-        // Filter 
-
+        //Filter properties 
         public List<Client> Clients { get; private set; }
         private Client _selectedClient;
 
@@ -129,7 +128,7 @@ namespace DetailingCenter
             }
         }
 
-
+        //Constructor
         public OrderPage_VM()
         {
 
@@ -185,7 +184,7 @@ namespace DetailingCenter
         }
 
 
-
+        //Method for add data
         public void Add()
         {
             var editOrderWindow = new EditOrderWindow();
@@ -194,6 +193,7 @@ namespace DetailingCenter
             Filter();
         }
 
+        //Method for edit data
         public void Edit()
         {
 
@@ -212,6 +212,7 @@ namespace DetailingCenter
             Filter();
         }
 
+        //Method for delete data
         public void Delete()
         {
             if (SelectedOrder != null)
@@ -234,6 +235,7 @@ namespace DetailingCenter
             Filter();
         }
 
+        //Filter
         private void Filter()
         {
 
@@ -275,6 +277,7 @@ namespace DetailingCenter
             exceptionWindow.ShowDialog();
         }
 
+        //Implementation of the interface INotifyPropertyChanged 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
         {

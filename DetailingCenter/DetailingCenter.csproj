@@ -115,10 +115,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Pages\Template.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Pages\ClientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -245,9 +241,6 @@
     <Compile Include="View\Pages\ServicePage.xaml.cs">
       <DependentUpon>ServicePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Pages\Template.xaml.cs">
-      <DependentUpon>Template.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Pages\ClientPage.xaml.cs">
       <DependentUpon>ClientPage.xaml</DependentUpon>
     </Compile>
@@ -357,6 +350,8 @@
     <Resource Include="Resources\Images\log_out.png" />
     <Resource Include="Resources\Images\dc_inv.png" />
     <Resource Include="Resources\Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\EF\ModelDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelDB.edmx</DependentUpon>

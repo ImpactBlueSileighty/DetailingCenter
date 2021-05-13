@@ -27,7 +27,6 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="StartYear" Type="nvarchar" MaxLength="4" Nullable="false" />
           <Property Name="CarMarkId" Type="int" Nullable="false" />
-          <Property Name="ClassId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -96,7 +95,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ServiceTypeId" Type="int" Nullable="false" />
           <Property Name="Duration" Type="decimal" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="Cost" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Cost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ServiceType">
@@ -382,7 +381,6 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="StartYear" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CarMarkId" Type="Int32" Nullable="false" />
-          <Property Name="ClassId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CarMark" Relationship="Self.FK_CarModel_CarMark" FromRole="CarModel" ToRole="CarMark" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_CarModel" FromRole="CarModel" ToRole="Order" />
         </EntityType>
@@ -469,7 +467,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ServiceTypeId" Type="Int32" Nullable="false" />
           <Property Name="Duration" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Client_Service" FromRole="Service" ToRole="Client" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_Service" FromRole="Service" ToRole="Order" />
@@ -769,7 +767,6 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="StartYear" ColumnName="StartYear" />
                 <ScalarProperty Name="CarMarkId" ColumnName="CarMarkId" />
-                <ScalarProperty Name="ClassId" ColumnName="ClassId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

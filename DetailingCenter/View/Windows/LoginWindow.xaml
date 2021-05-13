@@ -13,7 +13,10 @@
         WindowStyle="None"
         Background="#FFF6F7F9"
         FontFamily="/DetailingCenter;component/Resources/Fonts/#Open Sans">
+    
+    
     <Grid>
+        <!-- Lining -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -36,6 +39,7 @@
                 <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
 
+            <!-- Header -->
             <TextBlock Grid.Column="1"
                        Text="Login"
                        Foreground="#FFF7F9FC"
@@ -61,6 +65,7 @@
             </Button>
         </Grid>
 
+        <!-- Body lining -->
         <Grid Grid.Row="1"
               Grid.Column="1">
             <Grid.RowDefinitions>
@@ -71,8 +76,10 @@
                 <RowDefinition Height="1.5*"/>
             </Grid.RowDefinitions>
 
+            <!-- Logo -->
             <Image Source="/Resources/Images/dc_inv.png" />
 
+            <!-- Employee combobox-->
             <TextBlock Grid.Row="1"
                        Text="Employee"
                        Style="{StaticResource AddEditTbxStyle}"/>
