@@ -70,15 +70,15 @@ namespace DetailingCenter
                 || !String.IsNullOrEmpty(InputEmail)
                 || !String.IsNullOrEmpty(InputPhone)) 
             {
-                if (InputPhone.Length < 11 || !IsDigitsOnly(InputPhone))
+                if (InputPhone.Length < 11 || InputPhone.Any(Char.IsDigit))
                 {
-                    string message = "Phone must have 11 digits.";
+                    string message = "Phone must have 11 digits and start with 7.";
                     var exceptionWindow = new ExceptionWindow(message);
                     exceptionWindow.ShowDialog();
                 }
                 else if (Regex.IsMatch(InputEmail, emailPattern) == false)
                 {
-                    string message = "Incorrect Email format.";
+                    string message = "Incorrect email format.";
                     var exceptionWindow = new ExceptionWindow(message);
                     exceptionWindow.ShowDialog();
                 }
@@ -126,32 +126,7 @@ namespace DetailingCenter
             }
 
         }
-
-        bool IsDigitsOnly(string str)
-        {
-            int i = 11;
-            foreach (char c in str)
-            {
-                if (c < '0' || c > '9')
-                {
-                    i--;
-
-
-                }
-
-
-            }
-
-            if (i == 11)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
-        }
+ 
         // INotifyPropertyChanged interface implementation 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
